@@ -23,11 +23,11 @@ public class GlobalTimeManager : MonoBehaviour
     {
         Debug.Assert(globalTimer);
 
+        elapsedTime = 0.0f;
         currentSeason = startSeason;
 
         // 현재 씬 전체 field 저장
         fields = FindObjectsOfType<Field>();
-        Debug.Log("field count: " + fields.Length);
     }
 
     // Update is called once per frame

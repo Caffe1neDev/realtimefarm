@@ -19,10 +19,17 @@ public class PlantData : ScriptableObject
 
     void OnValidate()
     {
-        if(maxGrowthLevel != 0)
+        // Sprite Count가 기대치와 다르면 개수 조정
+        int expectedSpriteCount = maxGrowthLevel + 1;
+
+        while(spritesForLevel.Count < expectedSpriteCount)
         {
-            Debug.Assert(spritesForLevel.Capacity == maxGrowthLevel + 1, 
-                plantName + "'s max growth level and count of sprites are mismatched! Expected sprites count: " + (maxGrowthLevel + 1));
+            spritesForLevel.Add(null);
+        }
+
+        if(spritesForLevel.Count > expectedSpriteCount)
+        {
+            spritesForLevel.RemoveRange(expectedSpriteCount, spritesForLevel.Count - expectedSpriteCount);
         }
     }
 }
