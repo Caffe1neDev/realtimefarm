@@ -7,8 +7,6 @@ public enum Season
 }
 public class GlobalTimeManager : MonoBehaviour
 {
-    public Field[] fields;
-
     [Header("Global Time Setting")]
     public Timer globalTimer;
     public Season startSeason;
@@ -17,6 +15,8 @@ public class GlobalTimeManager : MonoBehaviour
 
     private float elapsedTime;
     private Season currentSeason;
+
+    public CropManager cropManager;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class GlobalTimeManager : MonoBehaviour
         currentSeason = startSeason;
 
         // 현재 씬 전체 field 저장
-        fields = FindObjectsOfType<Field>();
+        //fields = FindObjectsOfType<Field>();
     }
 
     // Update is called once per frame
@@ -35,9 +35,6 @@ public class GlobalTimeManager : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
-        foreach(Field field in fields)
-        {
-            field.UpdateTimer(Time.deltaTime);
-        }
+        cropManager.UpdateTime(Time.deltaTime);
     }
 }

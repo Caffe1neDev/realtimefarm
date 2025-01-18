@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Tilemaps;
 
-public class Field : MonoBehaviour
+public class Field
 {
     private PlantData plant;
     private float growthTimer;
     private int growthLevel;
-    private SpriteRenderer plantSpriteRenderer;
+    public Vector3Int tilePos; // used to notify crop level change of current Tile
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        plant = null;
-        
-        Debug.Assert(plantSpriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>());
-    }
+    public delegate void CropEventHandler(Vector3Int tilePos, TileBase tile);
+    public event CropEventHandler onCropLevelChangeEvent = delegate { };
+
+    // public Field(TileBase matchingTile)
+    // {
+    //     tilePos = Vector3Int.FloorToInt(matchingTile.GetComponent<Transform>().position);
+    //     plant = null;
+    // }
 
     public void UpdateTimer(float deltaTime) // TODO : add seasonal effect
     {
@@ -34,7 +37,8 @@ public class Field : MonoBehaviour
 
             if(growthLevel < plant.maxGrowthLevel) // TODO : implement case of overgrowth
             {
-                plantSpriteRenderer.sprite = plant.spritesForLevel[++growthLevel];
+                ++growthLevel;
+                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
             }
         }
     }
@@ -46,28 +50,19 @@ public class Field : MonoBehaviour
             return;
         }
 
-        Debug.Log("Planted " + toPlant.plantName + " on " + gameObject.name);
         plant = toPlant;
 
         growthTimer = 0.0f;
         growthLevel = 0;
-        plantSpriteRenderer.sprite = plant.spritesForLevel[0];
+
+        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
     }
 
     public void Harvest()
     {
-        Debug.Log("Harvested " + plant.plantName + " on " + gameObject.name);
-    }
+        // TODO : add harvest logic
+        plant = null;
 
-    [Header("Test")]
-    public PlantData testPlant;
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Test Plant function called");
-            // 테스트용 임시 식물심기 기능
-            Plant(testPlant);
-        }
+        onCropLevelChangeEvent.Invoke(tilePos, null);
     }
 }
