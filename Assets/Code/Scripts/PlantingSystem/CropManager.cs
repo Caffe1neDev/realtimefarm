@@ -29,7 +29,7 @@ public class CropManager : MonoBehaviour
 
                 Vector3 worldPos = cropTilemap.CellToWorld(new Vector3Int(cropTilemap.cellBounds.x + j * (int)cropTilemap.cellSize.x, 
                                             cropTilemap.cellBounds.y + i * (int)cropTilemap.cellSize.y, 0)) - cropTilemap.cellSize / 2;
-                Debug.Log(worldPos);
+                
                 fields[i][j].tilePos = new Vector3Int(Mathf.RoundToInt(worldPos.x), Mathf.RoundToInt(worldPos.y), 0);
             }
         }
@@ -49,7 +49,7 @@ public class CropManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void UpdateTime(float deltaTime)
+    public void UpdateTime(Season season, float deltaTime)
     {
         foreach (Field[] row in fields)
         {
