@@ -7,12 +7,12 @@ using UnityEngine.Tilemaps;
 public class MouseSelect : MonoBehaviour
 {
 
-    [Header("ÀÛ¹° ½É´Â Å¸ÀÏ ¸Ê ³Ö¾î¾ß ÇÔ")]
-    public Tilemap tilemap; //ÀÛ¹°¿ë Å¸ÀÏ
-    [Header("ui·Î ÀÛ¹° ¼±ÅÃµÈ Å¸ÀÏ")]
+    [Header("ï¿½Û¹ï¿½ ï¿½É´ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½ï¿½")]
+    public Tilemap tilemap; //íƒ€ì¼ë§µ íƒ€ì¼
+    [Header("uiï¿½ï¿½ ï¿½Û¹ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Å¸ï¿½ï¿½")]
     public TileBase changeTile;
     TileBase selectedTile;
-/*    [Header("0Àº ½É´Â¿ë Ä¿¼­, 1Àº Àç¹è¿ë Ä¿¼­")]
+/*     [Header("0ì€ ì‹¬ê¸°ìš© ì»¤ì„œ, 1ì€ ìˆ˜í™•ìš© ì»¤ì„œ")]
     public Sprite[] cursorSprites;*/
 
     SpriteRenderer cursor;
@@ -20,20 +20,22 @@ public class MouseSelect : MonoBehaviour
     bool isPlanting;
     Vector2 mousePosition;
 
+    public CropManager cropManager;
+
     // Start is called before the first frame update
     void Start()
     {
         cursor = GetComponent<SpriteRenderer>();
-        isPlanting = true; //½ÃÀÛÀº ¹«Á¶°Ç ½É±â¸ğµå;
+        isPlanting = true; //ì²˜ìŒì—” ì‹¬ê¸°ëª¨ë“œë¡œ ì‹œì‘;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("CropField"))
         {
-            print("¹üÀ§¾È");
+            print("ì‘ë¬¼ë°­");
             isCropField = true;
-            //ÀÛ¹° ½É±â ÇÊµåÀÏ ‹š
+            //êµì²´í•  íƒ€ì¼ì´ ì‘ë¬¼ë°­ì¸ì§€ í™•ì¸
         }
     }
 
@@ -41,21 +43,21 @@ public class MouseSelect : MonoBehaviour
     {
         if (collision.CompareTag("CropField"))
         {
-            print("¹üÀ§¹Û");
+            print("ì‘ë¬¼ë°­ ì•„ë‹˜");
             isCropField = false;
         }
     }
 
     private void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return; //UI ¼±ÅÃX ÀÏ¶§¸¸ ÀÛµ¿ÇÏµµ·Ï
+        if (EventSystem.current.IsPointerOverGameObject()) return; //UI ï¿½ï¿½ï¿½ï¿½X ï¿½Ï¶ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ï¿½Ïµï¿½ï¿½ï¿½
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         mousePosition = new Vector2(Mathf.Round(mousePosition.x), Mathf.Round(mousePosition.y));
         transform.position = mousePosition;
 
-        //ÀÌ¹Ì ¼³Ä¡ÇÑ Å¸ÀÏÀÌ ÀÖ´Â°¡ Ã¼Å©
+        // ì´ë¯¸ì§€ ìœ„ì¹˜ì— íƒ€ì¼ì´ ìˆëŠ”ì§€ í™•ì¸
         selectedTile = tilemap.GetTile(new Vector3Int((int)mousePosition.x, (int)mousePosition.y, 0));
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -64,13 +66,13 @@ public class MouseSelect : MonoBehaviour
 
             if (isPlanting)
             {
-                print("½É´ÂÁß");
+                print("ì‹¬ê¸° ëª¨ë“œ");
             }
             else
             {
-                print("Àç¹èÁß");
+                print("ìˆ˜í™• ëª¨ë“œ");
             }
-            //Ä¿¼­º¯°æ
+            // ì»¤ì„œ ìƒ‰ìƒ ë³€ê²½
         }
 
         if (isPlanting) ActivatePlantingMode();
@@ -79,33 +81,40 @@ public class MouseSelect : MonoBehaviour
     }
     void ActivatePlantingMode()
     {
-        if (!isCropField || selectedTile != null)
+        if (!isCropField) //  || selectedTile != null)
         {
-            //¼öÈ® °¡´ÉÇÑ °ø°£ X ÀÌ°Å ÀÌ¹ÌÁö ºñÈ°¼ºÈ­ ½ÃÅ°´Â °Íµµ ³ª»ÚÁö ¾ÊÀ» µí
+            //ì •í™•í•œ íƒ€ì¼ì´ ì•„ë‹˜. ì´ê²ƒì€ ì´ë¯¸ì§€ ë¹„í™œì„±í™” ì‹œí‚¤ëŠ” ì½”ë“œ
             cursor.color = new Color(1f, 0.7f, 0.7f, 0.5f);
         }
         else
         {
             cursor.color = new Color(1f, 1f, 1f, 1f);
-            //¿ìÅ¬¸¯½Ã
+            //í´ë¦­ ì´ë²¤íŠ¸
             if (Input.GetMouseButtonUp(0))
             {
-                OnClickMouse(changeTile);
+                //OnClickMouse(changeTile);
+                cropManager.Plant(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             }
         }
     }
 
     void ActivateHarvestMode()
     {
+        if (!isCropField) // || selectedTile != null)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
-            OnClickMouse(null);
+            //OnClickMouse(null);
+            cropManager.Harvest(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
 
     void OnClickMouse(TileBase myTile)
     {
-        //¼öÈ®
+        //ï¿½ï¿½È®
         tilemap.SetTile(new Vector3Int((int)mousePosition.x, (int)mousePosition.y, 0), myTile);
     }
 
