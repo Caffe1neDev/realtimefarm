@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Tilemaps;
 
+
 public class Field
 {
     private PlantData plant;
@@ -22,7 +23,7 @@ public class Field
     //     plant = null;
     // }
 
-    public void UpdateTimer(float deltaTime) // TODO : add seasonal effect
+    public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
     {
         if(plant == null) 
         {
@@ -35,7 +36,7 @@ public class Field
         {
             growthTimer -= plant.growthTimePerLevel;
 
-            if(growthLevel < plant.maxGrowthLevel) // TODO : implement case of overgrowth
+            if(growthLevel < plant.maxGrowthLevel && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0)) // TODO : implement case of overgrowth
             {
                 ++growthLevel;
                 onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);

@@ -55,7 +55,7 @@ public class CropManager : MonoBehaviour
         {
             foreach (Field field in row)
             {
-                field.UpdateTimer(deltaTime);
+                field.UpdateTimer(season, deltaTime);
             }
         }
     }
