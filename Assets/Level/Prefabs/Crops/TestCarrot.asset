@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6a49deb0dc77af4c9778ba3e2872cb4, type: 3}
-  m_Name: Carrot
+  m_Name: TestCarrot
   m_EditorClassIdentifier: 
   plantName: Carrot
   bestSeason: 5

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a49deb0dc77af4c9778ba3e2872cb4, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  plantName: Carrot
+  bestSeason: 7
+  maxGrowthLevel: 5
+  tilesForLevel:
+  - {fileID: 11400000, guid: 44edf385902b6b84a84244b897024d56, type: 2}
+  - {fileID: 11400000, guid: d07e45f119d54634e91bd73fb0ef44ac, type: 2}
+  - {fileID: 11400000, guid: eea84ccf6582eb147ad0e4d1b4f39617, type: 2}
+  - {fileID: 11400000, guid: 9a78fec506b7fbc40a15fadf5ef75166, type: 2}
+  - {fileID: 11400000, guid: a309ba88f2e575e4283e3cf36bbbbc18, type: 2}
+  - {fileID: 11400000, guid: da27a0f68b71b354c9edcc04ecc8adc1, type: 2}
+  growthTimePerLevel: 2
