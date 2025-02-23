@@ -22,7 +22,6 @@ public class InventorySlot : MonoBehaviour
         if(slot.item.stackable == true)
         {
             text.gameObject.SetActive(true);
-            text.text = slot.count.ToString();
         }
 
         else
