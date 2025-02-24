@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "name": "블루베리",
+      "description": "새콤달콤한 블루베리, 적당한 익힘이 가장 맛있다.",
+      "image": "blueberry.png",
+      "harvest": {
+        "underripe": 3,
+        "adequate": 5,
+        "best": 2,
+        "overripe": 1
+      },
+      "price": {
+        "underripe": 50,
+        "adequate": 100,
+        "best": 200,
+        "overripe": 30
+      }
+    },
+    {
+      "id": 2,
+      "name": "토마토",
+      "description": "햇빛을 많이 받을수록 당도가 높아진다.",
+      "image": "tomato.png",
+      "harvest": {
+        "underripe": 2,
+        "adequate": 8,
+        "best": 4,
+        "overripe": 0
+      },
+      "price": {
+        "underripe": 40,
+        "adequate": 90,
+        "best": 180,
+        "overripe": 20
+      }
+    }
+  ]
+  
