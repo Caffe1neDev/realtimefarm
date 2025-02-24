@@ -20,6 +20,8 @@ public class Field
     private FieldStatus status;
     private float growthTimer;
     private int growthLevel;
+
+    private float growthPeriodRandomizer = 0.05f; // 성장에 필요한 시간 랜덤화 범위
     public Vector3Int tilePos; // used to notify crop level change of current Tile
 
     public delegate void CropGrowthEventHandler(Vector3Int tilePos, TileBase tile, bool isOvergrown);
@@ -33,30 +35,34 @@ public class Field
 
     public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
     {
-        growthTimer += deltaTime;
-
-        if(status == FieldStatus.Growing) // Growth
+        if(status == FieldStatus.Empty)
         {
-            if(growthTimer >= plant.growthTimePerLevel)
+            return;
+        }
+
+        growthTimer -= deltaTime;
+
+        if(status == FieldStatus.Growing) // 일반 성장 확인
+        {
+            if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
             {
-                growthTimer -= plant.growthTimePerLevel;
-
-                if(growthLevel < plant.maxGrowthLevel 
-                    && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
-                {
-                    ++growthLevel;
-                    onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
-                }
-
+                ++growthLevel;
+                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+                
                 if(growthLevel == plant.maxGrowthLevel)
                 {
                     status = FieldStatus.Mature;
+                    growthTimer = plant.growthTimePerLevel + GetRandomizedGrowthTime(); // temp : 한단계 성장시간*2 방치시 과성장으로 판단
+                }
+                else
+                {
+                    growthTimer = GetRandomizedGrowthTime();
                 }
             }
         }
         else if(status == FieldStatus.Mature) // 과성장 확인
         {        
-            if(growthTimer >= plant.growthTimePerLevel * 2) // temp: 한단계 성장시간*2 방치시 과성장으로 판단
+            if(growthTimer < 0.0f)
             {
                 status = FieldStatus.Overgrown;
                 onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[plant.maxGrowthLevel], true);
@@ -74,18 +80,43 @@ public class Field
         status = FieldStatus.Growing;
         plant = toPlant;
 
-        growthTimer = 0.0f;
-        growthLevel = 0;
+        growthTimer = GetRandomizedGrowthTime();
+        growthLevel = 1;
 
         onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
     }
 
     public void Harvest()
     {
+        if(status == FieldStatus.Empty)
+        {
+            return;
+        }
+
         // TODO : add harvest logic
+        switch(status)
+        {
+            case FieldStatus.Growing:
+                // TODO : add immature harvest logic
+                break;
+            case FieldStatus.Mature:
+                // TODO : add harvest logic
+                break;
+            case FieldStatus.Overgrown:
+                // TODO : add overgrown harvest logic
+                break;
+            default:
+                return;
+        }
+
         plant = null;
         status = FieldStatus.Empty;
         
         onCropLevelChangeEvent.Invoke(tilePos, null, false);
+    }
+
+    private float GetRandomizedGrowthTime()
+    {
+        return plant.growthTimePerLevel * (1.0f + Random.Range(-growthPeriodRandomizer, growthPeriodRandomizer));
     }
 }
