@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a49deb0dc77af4c9778ba3e2872cb4, type: 3}
+  m_Name: Eggplant
+  m_EditorClassIdentifier: 
+  plantName: Eggplant
+  bestSeason: 3
+  maxGrowthLevel: 5
+  tilesForLevel:
+  - {fileID: 11400000, guid: 266d0ce3b6fd3214283ffb2ea1f2f2c0, type: 2}
+  - {fileID: 11400000, guid: 7f897e8e7f5df3b4ebdac956a030f3c1, type: 2}
+  - {fileID: 11400000, guid: fab5b6d4552862b4198dbf2a2a75ce26, type: 2}
+  - {fileID: 11400000, guid: 3905a3246614e7d4d85f83b9e583c512, type: 2}
+  - {fileID: 11400000, guid: 52cbc6b87bbaaaf439833b070f1f7bdd, type: 2}
+  - {fileID: 11400000, guid: c2be6625e33d8ad488ca51145126b326, type: 2}
+  growthTimePerLevel: 0

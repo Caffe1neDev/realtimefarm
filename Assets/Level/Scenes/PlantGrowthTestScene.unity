@@ -566,7 +566,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 68fafd0a2acc3774988418f657bf7b68, type: 3}
   startSeason: 0
   seasonLengthinDays: 5
-  dayLengthInSeconds: 3
+  dayLengthInSeconds: 1
   cropManager: {fileID: 1488889680}
 --- !u!1 &440796850
 GameObject:
@@ -889,7 +889,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropTilemap: {fileID: 850446569}
-  plantData: {fileID: 11400000, guid: 11d1db5cd133b0f459725b8de8c3f7d0, type: 2}
+  overgrownCropColor: {r: 0.3018868, g: 0.2020573, b: 0.14382343, a: 1}
+  plantData: {fileID: 11400000, guid: 7e491c0c770d9614b8874d3d460d9545, type: 2}
 --- !u!4 &1488889681
 Transform:
   m_ObjectHideFlags: 0
