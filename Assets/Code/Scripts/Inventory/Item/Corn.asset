@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa8e1716705c4c4b8360ca05ac08ab9, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
+  Name: Corn
+  stackable: 1
+  icon: {fileID: -2064754189, guid: 26587cc4e4e639b4e989d63a6ae3ae74, type: 3}
