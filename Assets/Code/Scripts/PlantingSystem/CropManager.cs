@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -7,12 +8,15 @@ using UnityEngine.Tilemaps;
 // Generate fields for each crop tile and manage planting & harvesting
 public class CropManager : MonoBehaviour
 {  
-    public Tilemap cropTilemap;
+    [SerializeField] private Tilemap cropTilemap;
+    [SerializeField] private Color overgrownCropColor;
 
     private Field[][] fields;
 
     [Header("Test Crop to plant")]
     public PlantData plantData;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,6 @@ public class CropManager : MonoBehaviour
             foreach (Field field in row)
             {
                 field.onCropLevelChangeEvent += OnCropLevelChange;
-                field.Plant(plantData);
             }
         }
     }
@@ -60,12 +63,21 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public void OnCropLevelChange(Vector3Int tilePos, TileBase newTile)
+    public void OnCropLevelChange(Vector3Int tilePos, TileBase newTile, bool isOvergrown)
     {
-        cropTilemap.SetTile(tilePos, newTile);
+        if(isOvergrown)
+        {
+            Debug.Log("Overgrown");
+            cropTilemap.SetTileFlags(tilePos, TileFlags.None);
+            cropTilemap.SetColor(tilePos, overgrownCropColor);
+        }
+        else
+        {
+            cropTilemap.SetTile(tilePos, newTile);
+        }
     }
 
-    public void Plant(Vector3 mousePosition)
+    public void Plant(Vector3 mousePosition)               
     {
 
         Vector3Int cellPos = cropTilemap.WorldToCell(mousePosition) - cropTilemap.cellBounds.min;

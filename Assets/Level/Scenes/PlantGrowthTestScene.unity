@@ -889,6 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cropTilemap: {fileID: 850446569}
+  overgrownCropColor: {r: 0.3018868, g: 0.2020573, b: 0.14382343, a: 1}
   plantData: {fileID: 11400000, guid: 11d1db5cd133b0f459725b8de8c3f7d0, type: 2}
 --- !u!4 &1488889681
 Transform:

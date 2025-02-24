@@ -6,16 +6,24 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Tilemaps;
 
+public enum FieldStatus
+{
+    Empty,
+    Growing,
+    Mature,
+    Overgrown
+};
 
 public class Field
 {
     private PlantData plant;
+    private FieldStatus status;
     private float growthTimer;
     private int growthLevel;
     public Vector3Int tilePos; // used to notify crop level change of current Tile
 
-    public delegate void CropEventHandler(Vector3Int tilePos, TileBase tile);
-    public event CropEventHandler onCropLevelChangeEvent = delegate { };
+    public delegate void CropGrowthEventHandler(Vector3Int tilePos, TileBase tile, bool isOvergrown);
+    public event CropGrowthEventHandler onCropLevelChangeEvent = delegate { };
 
     // public Field(TileBase matchingTile)
     // {
@@ -25,45 +33,59 @@ public class Field
 
     public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
     {
-        if(plant == null) 
-        {
-            return;
-        }
-
         growthTimer += deltaTime;
 
-        if(growthTimer >= plant.growthTimePerLevel)
+        if(status == FieldStatus.Growing) // Growth
         {
-            growthTimer -= plant.growthTimePerLevel;
-
-            if(growthLevel < plant.maxGrowthLevel && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0)) // TODO : implement case of overgrowth
+            if(growthTimer >= plant.growthTimePerLevel)
             {
-                ++growthLevel;
-                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
+                growthTimer -= plant.growthTimePerLevel;
+
+                if(growthLevel < plant.maxGrowthLevel 
+                    && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
+                {
+                    ++growthLevel;
+                    onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+                }
+
+                if(growthLevel == plant.maxGrowthLevel)
+                {
+                    status = FieldStatus.Mature;
+                }
+            }
+        }
+        else if(status == FieldStatus.Mature) // 과성장 확인
+        {        
+            if(growthTimer >= plant.growthTimePerLevel * 2) // temp: 한단계 성장시간*2 방치시 과성장으로 판단
+            {
+                status = FieldStatus.Overgrown;
+                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[plant.maxGrowthLevel], true);
             }
         }
     }
 
     public void Plant(PlantData toPlant)
     {
-        if(plant != null)
+        if(status != FieldStatus.Empty)
         {
             return;
         }
 
+        status = FieldStatus.Growing;
         plant = toPlant;
 
         growthTimer = 0.0f;
         growthLevel = 0;
 
-        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
+        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
     }
 
     public void Harvest()
     {
         // TODO : add harvest logic
         plant = null;
-
-        onCropLevelChangeEvent.Invoke(tilePos, null);
+        status = FieldStatus.Empty;
+        
+        onCropLevelChangeEvent.Invoke(tilePos, null, false);
     }
 }
