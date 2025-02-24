@@ -7,13 +7,18 @@ using UnityEngine.Tilemaps;
 public class MouseSelect : MonoBehaviour
 {
 
-    [Header("�۹� �ɴ� Ÿ�� �� �־�� ��")]
+    [Header("작물 심는 타일 맵 넣어야 함")]
     public Tilemap tilemap; //타일맵 타일
-    [Header("ui�� �۹� ���õ� Ÿ��")]
+    [Header("ui로 작물 선택된 타일")]
     public TileBase changeTile;
     TileBase selectedTile;
-/*     [Header("0은 심기용 커서, 1은 수확용 커서")]
-    public Sprite[] cursorSprites;*/
+    /*     [Header("0은 심기용 커서, 1은 수확용 커서")]
+        public Sprite[] cursorSprites;*/
+
+    [Header("땅 크기")]
+    public int x;
+    public int y;
+
 
     SpriteRenderer cursor;
     bool isCropField;
