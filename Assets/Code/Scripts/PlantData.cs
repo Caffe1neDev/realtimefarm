@@ -26,6 +26,7 @@ public class PlantData : ScriptableObject
 
     [Tooltip("Sprites of the plant for each level, 0 - maxGrowthLevel")]
     public List<TileBase> tilesForLevel;
+    public List<Sprite> spriteForLevel;
 
     [Range(0.0f, 600.0f)]
     public float growthTimePerLevel;

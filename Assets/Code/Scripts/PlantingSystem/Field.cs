@@ -14,7 +14,7 @@ public enum FieldStatus
     Overgrown
 };
 
-public class Field
+public class Field : MonoBehaviour
 {
     private PlantData plant;
     private FieldStatus status;
@@ -27,11 +27,15 @@ public class Field
     public delegate void CropGrowthEventHandler(Vector3Int tilePos, TileBase tile, bool isOvergrown);
     public event CropGrowthEventHandler onCropLevelChangeEvent = delegate { };
 
-    // public Field(TileBase matchingTile)
-    // {
-    //     tilePos = Vector3Int.FloorToInt(matchingTile.GetComponent<Transform>().position);
-    //     plant = null;
-    // }
+    public delegate void OnFieldSelection(Field field);
+    public event OnFieldSelection onFieldSelection = delegate { };
+
+    private SpriteRenderer spriteRenderer;
+
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
     {
@@ -47,7 +51,8 @@ public class Field
             if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
             {
                 ++growthLevel;
-                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+                spriteRenderer.sprite = plant.spriteForLevel[growthLevel];
+                //onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
                 
                 if(growthLevel == plant.maxGrowthLevel)
                 {
@@ -118,5 +123,20 @@ public class Field
     private float GetRandomizedGrowthTime()
     {
         return plant.growthTimePerLevel * (1.0f + Random.Range(-growthPeriodRandomizer, growthPeriodRandomizer));
+    }
+
+    void OnMouseEnter()
+    {
+        // TODO : add mouse enter logic
+        Debug.Log("Mouse Enter");
+
+        onFieldSelection.Invoke(this);
+    }
+
+    void OnMouseExit()
+    {
+        // TODO : add mouse exit logic
+        Debug.Log("Mouse Exit");
+        onFieldSelection.Invoke(this);
     }
 }
