@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantId: 8
   plantName: Eggplant
+  plantImage: {fileID: -314149868, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
   bestSeason: 1
   maxGrowthLevel: 3
   spriteForLevel:

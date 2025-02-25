@@ -17,6 +17,8 @@ public class CropManager : MonoBehaviour
     [Header("Test Crop to plant")]
     public PlantData plantData;
 
+    private PlantData selectedPlant;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,13 +49,13 @@ public class CropManager : MonoBehaviour
         }
         else
         {
-            mouseSelect.SetCursurPosition(Vector3.zero);
+            mouseSelect.SetCursurPosition(new Vector3(-1000, -1000, 0));
         }
     }
 
     public void Plant()               
     {
-        if(selectedField == null)
+        if(selectedPlant == null || selectedField == null)
         {
             return;
         }
@@ -68,5 +70,10 @@ public class CropManager : MonoBehaviour
         }
 
         selectedField.Harvest();
+    }
+
+    public void SetSelectedPlant(PlantData plant)
+    {
+        plantData = plant;
     }
 }

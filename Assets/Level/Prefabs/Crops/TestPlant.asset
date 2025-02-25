@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantId: 3
   plantName: Test
+  plantImage: {fileID: -1184649792, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
   bestSeason: 7
   maxGrowthLevel: 3
   spriteForLevel:

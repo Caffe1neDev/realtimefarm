@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantId: 7
   plantName: Broccoli
+  plantImage: {fileID: -2117989532, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
   bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:

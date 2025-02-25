@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantId: 5
   plantName: Wheat
+  plantImage: {fileID: 692887523, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
   bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:

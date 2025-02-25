@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,6 +20,7 @@ public class PlantData : ScriptableObject
 {
     public int plantId;
     public string plantName;
+    public Sprite plantImage;
 
     public SeasonFlags bestSeason;
 

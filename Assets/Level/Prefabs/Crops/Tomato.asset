@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantId: 1
   plantName: Tomato
+  plantImage: {fileID: -1079908024, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
   bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:
