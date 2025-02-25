@@ -4919,6 +4919,7 @@ MonoBehaviour:
   - {fileID: 228795896}
   - {fileID: 131329925}
   DetailName: {fileID: 661238293}
+  DetailImage: {fileID: 1422703195}
   DescriptionBox: {fileID: 934573963}
   UnripeQuantity: {fileID: 1217090674}
   OverripeQuantity: {fileID: 1476353383}
