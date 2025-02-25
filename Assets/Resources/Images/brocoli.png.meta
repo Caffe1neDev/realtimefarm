@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: brocolie_0
+      name: brocoli_0
       rect:
         serializedVersion: 2
         x: 54
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2e15f7ede551443bc959cc9916b383
-      internalID: 1541945720
+      spriteID: 02a86182f2cec234f9bee9323db0a797
+      internalID: -208427393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brocolie_1
+      name: brocoli_1
       rect:
         serializedVersion: 2
         x: 282
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97eab0ab99c48704f9fb5fa364158aa5
-      internalID: 512207281
+      spriteID: 603f809c452b0964d9ed3485352fa6e0
+      internalID: -1807962288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brocolie_2
+      name: brocoli_2
       rect:
         serializedVersion: 2
         x: 543
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd2815b5ed9ffc4795110832bc79cec
-      internalID: 645543702
+      spriteID: 215a30732307d7348a165a0de5cf8778
+      internalID: -1287293106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brocolie_3
+      name: brocoli_3
       rect:
         serializedVersion: 2
         x: 790
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f580109e1bb8364daeababc36158db5
-      internalID: -1105089052
+      spriteID: bb1bc7504a7926e49a852b8e11a3cdf2
+      internalID: 1681397295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brocolie_4
+      name: brocoli_4
       rect:
         serializedVersion: 2
         x: 1070
@@ -227,8 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6477302d8bf701044a20b64574bb6599
-      internalID: -1180223979
+      spriteID: fb36c701573b7e24aa9321140bf2d3b6
+      internalID: -2117989532
       vertices: []
       indices: 
       edges: []
@@ -244,11 +244,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      brocolie_0: 1541945720
-      brocolie_1: 512207281
-      brocolie_2: 645543702
-      brocolie_3: -1105089052
-      brocolie_4: -1180223979
+      brocoli_0: -208427393
+      brocoli_1: -1807962288
+      brocoli_2: -1287293106
+      brocoli_3: 1681397295
+      brocoli_4: -2117989532
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -3,7 +3,7 @@
     "id": 1,
     "name": "토마토",
     "description": "햇빛을 많이 받을수록 당도가 높아진다.",
-    "image": "tomato.png",
+    "sprite_name": "tomato",
     "harvest": {
       "underripe": 2,
       "best": 4,
@@ -19,7 +19,7 @@
     "id": 2,
     "name": "당근",
     "description": "당근은 땅속에서 자라며, 달콤한 맛이 특징이다.",
-    "image": "carrot.png",
+    "sprite_name": "carrot",
     "harvest": {
       "underripe": 3,
       "best": 2,
@@ -35,7 +35,7 @@
     "id": 3,
     "name": "호박",
     "description": "호박은 비타민이 풍부하고, 다양한 요리에 사용된다.",
-    "image": "pumpkin.png",
+    "sprite_name": "pumpkin",
     "harvest": {
       "underripe": 4,
       "best": 3,
@@ -51,7 +51,7 @@
     "id": 4,
     "name": "해바라기",
     "description": "해바라기는 햇볕을 따라 움직이며 아름다운 꽃을 피운다.",
-    "image": "sunflower.png",
+    "sprite_name": "sunflower",
     "harvest": {
       "underripe": 2,
       "best": 5,
@@ -67,7 +67,7 @@
     "id": 5,
     "name": "밀",
     "description": "밀은 주로 빵을 만드는 데 사용되며, 주요 식량원이다.",
-    "image": "wheat.png",
+    "sprite_name": "wheat",
     "harvest": {
       "underripe": 1,
       "best": 6,
@@ -83,7 +83,7 @@
     "id": 6,
     "name": "옥수수",
     "description": "옥수수는 여름철에 자주 소비되는 맛있는 곡물이다.",
-    "image": "corn.png",
+    "sprite_name": "corn",
     "harvest": {
       "underripe": 3,
       "best": 4,
@@ -99,7 +99,7 @@
     "id": 7,
     "name": "브로콜리",
     "description": "브로콜리는 건강에 좋은 채소로, 다양한 요리에 쓰인다.",
-    "image": "broccoli.png",
+    "sprite_name": "brocoli",
     "harvest": {
       "underripe": 2,
       "best": 5,
@@ -115,7 +115,7 @@
     "id": 8,
     "name": "가지",
     "description": "가지는 부드럽고 다양한 요리에 활용되는 채소이다.",
-    "image": "eggplant.png",
+    "sprite_name": "eggplant",
     "harvest": {
       "underripe": 4,
       "best": 3,

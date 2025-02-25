@@ -3396,8 +3396,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4071,7 +4071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PlantName
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a46dc17cfbcb32040b34785265f15ecb, type: 2}
   m_sharedMaterial: {fileID: -9155943449444379609, guid: a46dc17cfbcb32040b34785265f15ecb, type: 2}
@@ -4909,6 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryPanel: {fileID: 1567558192}
+  DetailPanel: {fileID: 1527711946}
   PlantSlots:
   - {fileID: 7108941957387901199}
   - {fileID: 328368569}
@@ -4919,6 +4920,7 @@ MonoBehaviour:
   - {fileID: 228795896}
   - {fileID: 131329925}
   DetailName: {fileID: 661238293}
+  DetailImage: {fileID: 1422703195}
   DescriptionBox: {fileID: 934573963}
   UnripeQuantity: {fileID: 1217090674}
   OverripeQuantity: {fileID: 1476353383}
@@ -4990,8 +4992,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5646,8 +5648,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

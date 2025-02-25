@@ -7,7 +7,7 @@ public class Plant
     public int id;
     public string name;
     public string description;
-    public string image;
+    public string sprite_name;
     public Harvest harvest;
     public Price price;
 }
