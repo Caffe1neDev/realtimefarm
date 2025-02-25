@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a49deb0dc77af4c9778ba3e2872cb4, type: 3}
+  m_Name: Corn
+  m_EditorClassIdentifier: 
+  plantName: Corn
+  bestSeason: 6
+  maxGrowthLevel: 5
+  tilesForLevel:
+  - {fileID: 11400000, guid: 9b334e902d2d39945988a8e6c0b3549e, type: 2}
+  - {fileID: 11400000, guid: 6f1509bf944b28b4ba7b0c3dbaea24ef, type: 2}
+  - {fileID: 11400000, guid: 17043433430391248ad58298c9aab1a5, type: 2}
+  - {fileID: 11400000, guid: e8d933946e8781542909d62b7d2608ef, type: 2}
+  - {fileID: 11400000, guid: fcb238580841e2a46af143119fd09b1b, type: 2}
+  - {fileID: 11400000, guid: 7cdd276eedafdc045b08600ef81421bf, type: 2}
+  growthTimePerLevel: 0.5

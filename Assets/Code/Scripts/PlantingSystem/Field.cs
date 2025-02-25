@@ -6,15 +6,26 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Tilemaps;
 
+public enum FieldStatus
+{
+    Empty,
+    Growing,
+    Mature,
+    Overgrown
+};
+
 public class Field
 {
     private PlantData plant;
+    private FieldStatus status;
     private float growthTimer;
     private int growthLevel;
+
+    private float growthPeriodRandomizer = 0.05f; // 성장에 필요한 시간 랜덤화 범위
     public Vector3Int tilePos; // used to notify crop level change of current Tile
 
-    public delegate void CropEventHandler(Vector3Int tilePos, TileBase tile);
-    public event CropEventHandler onCropLevelChangeEvent = delegate { };
+    public delegate void CropGrowthEventHandler(Vector3Int tilePos, TileBase tile, bool isOvergrown);
+    public event CropGrowthEventHandler onCropLevelChangeEvent = delegate { };
 
     // public Field(TileBase matchingTile)
     // {
@@ -22,47 +33,90 @@ public class Field
     //     plant = null;
     // }
 
-    public void UpdateTimer(float deltaTime) // TODO : add seasonal effect
+    public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
     {
-        if(plant == null) 
+        if(status == FieldStatus.Empty)
         {
             return;
         }
 
-        growthTimer += deltaTime;
+        growthTimer -= deltaTime;
 
-        if(growthTimer >= plant.growthTimePerLevel)
+        if(status == FieldStatus.Growing) // 일반 성장 확인
         {
-            growthTimer -= plant.growthTimePerLevel;
-
-            if(growthLevel < plant.maxGrowthLevel) // TODO : implement case of overgrowth
+            if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
             {
                 ++growthLevel;
-                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
+                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+                
+                if(growthLevel == plant.maxGrowthLevel)
+                {
+                    status = FieldStatus.Mature;
+                    growthTimer = plant.growthTimePerLevel + GetRandomizedGrowthTime(); // temp : 한단계 성장시간*2 방치시 과성장으로 판단
+                }
+                else
+                {
+                    growthTimer = GetRandomizedGrowthTime();
+                }
+            }
+        }
+        else if(status == FieldStatus.Mature) // 과성장 확인
+        {        
+            if(growthTimer < 0.0f)
+            {
+                status = FieldStatus.Overgrown;
+                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[plant.maxGrowthLevel], true);
             }
         }
     }
 
     public void Plant(PlantData toPlant)
     {
-        if(plant != null)
+        if(status != FieldStatus.Empty)
         {
             return;
         }
 
+        status = FieldStatus.Growing;
         plant = toPlant;
 
-        growthTimer = 0.0f;
-        growthLevel = 0;
+        growthTimer = GetRandomizedGrowthTime();
+        growthLevel = 1;
 
-        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel]);
+        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
     }
 
     public void Harvest()
     {
-        // TODO : add harvest logic
-        plant = null;
+        if(status == FieldStatus.Empty)
+        {
+            return;
+        }
 
-        onCropLevelChangeEvent.Invoke(tilePos, null);
+        // TODO : add harvest logic
+        switch(status)
+        {
+            case FieldStatus.Growing:
+                // TODO : add immature harvest logic
+                break;
+            case FieldStatus.Mature:
+                // TODO : add harvest logic
+                break;
+            case FieldStatus.Overgrown:
+                // TODO : add overgrown harvest logic
+                break;
+            default:
+                return;
+        }
+
+        plant = null;
+        status = FieldStatus.Empty;
+        
+        onCropLevelChangeEvent.Invoke(tilePos, null, false);
+    }
+
+    private float GetRandomizedGrowthTime()
+    {
+        return plant.growthTimePerLevel * (1.0f + Random.Range(-growthPeriodRandomizer, growthPeriodRandomizer));
     }
 }
