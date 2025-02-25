@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707e9436f806f4b47a53e979be8409ba, type: 3}
+  m_Name: Wheat
+  m_EditorClassIdentifier: 
+  plantId: 5
+  plantName: Wheat
+  plantImage: {fileID: 692887523, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  bestSeason: 3
+  maxGrowthLevel: 3
+  spriteForLevel:
+  - {fileID: 1663423130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -1983592543, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -514743143, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -1891480130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  growthTimePerLevel: 20

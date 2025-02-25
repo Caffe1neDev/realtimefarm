@@ -8,86 +8,72 @@ using UnityEngine.Tilemaps;
 // Generate fields for each crop tile and manage planting & harvesting
 public class CropManager : MonoBehaviour
 {  
-    [SerializeField] private Tilemap cropTilemap;
+    [SerializeField] private MouseSelect mouseSelect;
     [SerializeField] private Color overgrownCropColor;
 
-    private Field[][] fields;
+    private Field[] fields;    
+    private Field selectedField;
 
     [Header("Test Crop to plant")]
     public PlantData plantData;
 
-    
+    private PlantData selectedPlant;
 
     // Start is called before the first frame update
     void Start()
     {
-        fields = new Field[cropTilemap.cellBounds.size.y][];
-
-        for(int i = 0; i < cropTilemap.cellBounds.size.y; i++)
+        fields = FindObjectsOfType<Field>();
+        selectedField = null;
+        foreach (Field field in fields)
         {
-            fields[i] = new Field[cropTilemap.cellBounds.size.x];
-
-            for(int j = 0; j < cropTilemap.cellBounds.size.x; j++)
-            {
-                fields[i][j] = new Field();
-
-                Vector3 worldPos = cropTilemap.CellToWorld(new Vector3Int(cropTilemap.cellBounds.x + j * (int)cropTilemap.cellSize.x, 
-                                            cropTilemap.cellBounds.y + i * (int)cropTilemap.cellSize.y, 0)) - cropTilemap.cellSize / 2;
-                
-                fields[i][j].tilePos = new Vector3Int(Mathf.RoundToInt(worldPos.x), Mathf.RoundToInt(worldPos.y), 0);
-            }
-        }
-
-        Debug.Log($"Tilemap size x : {cropTilemap.cellBounds.size.x} y : {cropTilemap.cellBounds.size.y}, \n" +
-              $"Cellbounds x : {cropTilemap.cellBounds.x} y : {cropTilemap.cellBounds.y}, \n" +
-              $"Created {cropTilemap.cellBounds.size.y * cropTilemap.cellBounds.size.x} fields in total");
-
-        foreach (Field[] row in fields)
-        {
-            foreach (Field field in row)
-            {
-                field.onCropLevelChangeEvent += OnCropLevelChange;
-            }
-        }
+            field.onFieldSelection += OnFieldSelection;
+        }        
     }
 
     // Update is called once per frame
     public void UpdateTime(Season season, float deltaTime)
     {
-        foreach (Field[] row in fields)
+        foreach (Field field in fields)
         {
-            foreach (Field field in row)
-            {
-                field.UpdateTimer(season, deltaTime);
-            }
+            field.UpdateTimer(season, deltaTime);
         }
     }
 
-    public void OnCropLevelChange(Vector3Int tilePos, TileBase newTile, bool isOvergrown)
+    public void OnFieldSelection(Field field)
     {
-        if(isOvergrown)
+        selectedField = field;
+
+        if(field != null)
         {
-            Debug.Log("Overgrown");
-            cropTilemap.SetTileFlags(tilePos, TileFlags.None);
-            cropTilemap.SetColor(tilePos, overgrownCropColor);
+            mouseSelect.SetCursurPosition(field.transform.position);
         }
         else
         {
-            cropTilemap.SetTile(tilePos, newTile);
+            mouseSelect.SetCursurPosition(new Vector3(-1000, -1000, 0));
         }
     }
 
-    public void Plant(Vector3 mousePosition)               
+    public void Plant()               
     {
+        if(selectedPlant == null || selectedField == null)
+        {
+            return;
+        }
 
-        Vector3Int cellPos = cropTilemap.WorldToCell(mousePosition) - cropTilemap.cellBounds.min;
-        fields[cellPos.y][cellPos.x].Plant(plantData);
-        Debug.Log("Plant on " + cellPos);
+        selectedField.Plant(plantData);
     }
-    public void Harvest(Vector3 mousePosition)
+    public void Harvest()
     {
-        Vector3Int cellPos = cropTilemap.WorldToCell(mousePosition) - cropTilemap.cellBounds.min;
-        fields[cellPos.y][cellPos.x].Harvest();
-        Debug.Log("Harvest on " + cellPos);
+        if(selectedField == null)
+        {
+            return;
+        }
+
+        selectedField.Harvest();
+    }
+
+    public void SetSelectedPlant(PlantData plant)
+    {
+        plantData = plant;
     }
 }
