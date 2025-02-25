@@ -91,9 +91,9 @@ public class InventoryUI : MonoBehaviour
     // 나머지 정보 업데이트
     DetailName.text = plant.name;
     DescriptionBox.text = plant.description;
-    UnripeQuantity.text = plant.harvest.underripe.ToString();
-    OverripeQuantity.text = plant.harvest.overripe.ToString();
-    BestQuantity.text = plant.harvest.best.ToString();
+    UnripeQuantity.text = "x" + plant.harvest.underripe.ToString();
+    OverripeQuantity.text = "x" + plant.harvest.overripe.ToString();
+    BestQuantity.text = "x" + plant.harvest.best.ToString();
 }
 
 }
