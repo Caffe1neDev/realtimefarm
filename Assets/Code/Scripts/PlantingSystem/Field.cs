@@ -138,17 +138,12 @@ public class Field : MonoBehaviour
 
     void OnMouseEnter()
     {
-        // TODO : add mouse enter logic
-        Debug.Log("Mouse Enter");
-
         onFieldSelection.Invoke(this);
     }
 
     void OnMouseExit()
     {
-        // TODO : add mouse exit logic
-        Debug.Log("Mouse Exit");
-        onFieldSelection.Invoke(this);
+        onFieldSelection.Invoke(null);
     }
 
     public Vector3 GetPlantSpritePosition()

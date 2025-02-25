@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public enum Season 
 {
     Spring, Summer, Fall, Invalid
 }
+
 public class GlobalTimeManager : MonoBehaviour
 {
     [Header("UI Displays")]
-    public SpriteRenderer seasonDisplay;
-    public TextMesh dayDisplay;
-    public Timer globalTimer;
+    //public SpriteRenderer seasonDisplay;
+    public TMP_Text dayDisplay;
     public Sprite[] seasonSprites = new Sprite[4];
 
     [Header("Global Time Setting")]
@@ -29,7 +30,7 @@ public class GlobalTimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Assert(globalTimer);
+        Debug.Assert(dayDisplay);
 
         elapsedTime = 0.0f;
         elaspedTimeInDay = 0.0f;
@@ -77,11 +78,28 @@ public class GlobalTimeManager : MonoBehaviour
 
     void UpdateDayDisplay()
     {
-        dayDisplay.text = "Day " + currentDay.ToString("D2");
+        dayDisplay.text = SeasonToString(currentSeason) + " " + currentDay + "일";
     }
 
     void UpdateSeasonDisplay(Season newSeason)
     {
-        seasonDisplay.sprite = seasonSprites[(int)newSeason];
+        //seasonDisplay.sprite = seasonSprites[(int)newSeason];
+    }
+
+    string SeasonToString(Season season)
+    {
+        switch(season)
+        {
+            case Season.Spring:
+                return "봄";
+            case Season.Summer:
+                return "여름";
+            case Season.Fall:
+                return "가을";
+            case Season.Invalid:
+                return "Invalid";
+            default:
+                return "Invalid";
+        }
     }
 }
