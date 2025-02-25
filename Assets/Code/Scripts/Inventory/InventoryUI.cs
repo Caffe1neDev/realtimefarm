@@ -7,10 +7,11 @@ using TMPro;
 public class InventoryUI : MonoBehaviour
 {
     public GameObject InventoryPanel;   // 인벤토리 패널
+    public GameObject DetailPanel;      // 디테일 패널
     public GameObject[] PlantSlots;     // 9개의 고정된 슬롯 배열
 
     public TMP_Text DetailName;         // 상세 정보 - 식물 이름
-    //public Image DetailImage;           // 상세 정보 - 식물 이미지
+    public Image DetailImage;           // 상세 정보 - 식물 이미지
     public TMP_Text DescriptionBox;     // 상세 정보 - 설명
 
     // 등급별 개수 UI 요소
@@ -23,6 +24,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         InventoryPanel.SetActive(ActiveInventory);
+        DetailPanel.SetActive(false);
         LoadPlants();
     }
 
@@ -77,14 +79,21 @@ public class InventoryUI : MonoBehaviour
 }
 
     void ShowPlantDetails(Plant plant)
-    {
-       // DetailImage.sprite = Resources.Load<Sprite>("Images/" + plant.image);
-        DetailName.text = plant.name;
-        DescriptionBox.text = plant.description;
+{
+    DetailPanel.SetActive(true);
+    // JSON에서 `sprite_name`을 가져와 해당 스프라이트 시트 로드
+    Sprite[] sprites = Resources.LoadAll<Sprite>("Images/" + plant.sprite_name);
 
-        // 수확 개수 갱신
-        UnripeQuantity.text = plant.harvest.underripe.ToString();
-        OverripeQuantity.text = plant.harvest.overripe.ToString();
-        BestQuantity.text = plant.harvest.best.ToString();
-    }
+   
+    DetailImage.sprite = sprites[sprites.Length-1];  // 마지막 스프라이트 적용
+    
+
+    // 나머지 정보 업데이트
+    DetailName.text = plant.name;
+    DescriptionBox.text = plant.description;
+    UnripeQuantity.text = "x" + plant.harvest.underripe.ToString();
+    OverripeQuantity.text = "x" + plant.harvest.overripe.ToString();
+    BestQuantity.text = "x" + plant.harvest.best.ToString();
+}
+
 }

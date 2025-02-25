@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 35de725be4f79164296e30a4b617e87b
+guid: 233ce065043491a42b1fd46b62294afd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Farm_4_0
+      name: wheat_0
       rect:
         serializedVersion: 2
         x: 59
-        y: 1738
+        y: 88
         width: 75
-        height: 135
+        height: 136
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,19 +143,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83b21bfd3a285b747a5464482deefc96
-      internalID: -2055192598
+      spriteID: 38e42eb7363dcb74b941907093f582b9
+      internalID: 1663423130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farm_4_1
+      name: wheat_1
       rect:
         serializedVersion: 2
         x: 220
-        y: 1719
-        width: 203
+        y: 70
+        width: 204
         height: 242
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -164,18 +164,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1008b77b357cc904d9d06d6a517713ad
-      internalID: -1137658486
+      spriteID: 88ceb4229ac8b7b4e8f0429f64326eaa
+      internalID: -1983592543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farm_4_2
+      name: wheat_2
       rect:
         serializedVersion: 2
         x: 495
-        y: 1703
+        y: 54
         width: 222
         height: 258
       alignment: 0
@@ -185,19 +185,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd2c841e511ac454fbe05020af5b84b1
-      internalID: 1908303848
+      spriteID: 768a291d733713d4694f4ff9b9f82dbd
+      internalID: -514743143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farm_4_3
+      name: wheat_3
       rect:
         serializedVersion: 2
-        x: 790
-        y: 1712
-        width: 223
+        x: 789
+        y: 63
+        width: 224
         height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -206,18 +206,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f2a45c4b802b04f852e6ca540f1a19
-      internalID: 2106650236
+      spriteID: 42eed11e6a271ef4b80f83713761bdb5
+      internalID: -1891480130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farm_4_4
+      name: wheat_4
       rect:
         serializedVersion: 2
         x: 1134
-        y: 1735
+        y: 86
         width: 142
         height: 178
       alignment: 0
@@ -227,134 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3f32b4b9c5a2d04ba76faca201ffc4a
-      internalID: 103581290
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_5
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 1448
-        width: 106
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fec5ca3bf8d0c75449f3831c9f6303ea
-      internalID: 592350833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_6
-      rect:
-        serializedVersion: 2
-        x: 276
-        y: 1419
-        width: 106
-        height: 171
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa20e061d08065e4fb01130156b77767
-      internalID: 1983251017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_7
-      rect:
-        serializedVersion: 2
-        x: 547
-        y: 1401
-        width: 134
-        height: 195
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee34235e8dab3d34caa2815586ec68c6
-      internalID: 1369868154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_8
-      rect:
-        serializedVersion: 2
-        x: 834
-        y: 1398
-        width: 134
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7df676cb2ad7ca6458928a8068d5f688
-      internalID: 1148265206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_9
-      rect:
-        serializedVersion: 2
-        x: 1115
-        y: 1408
-        width: 147
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8426a496900d87e4eae766ded75305c2
-      internalID: -1820651046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farm_4_10
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 347
-        width: 799
-        height: 886
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 014fdf10bc33c144995091d967541599
-      internalID: -2092186376
+      spriteID: b5c80440de6263645be05c0a090b167c
+      internalID: 692887523
       vertices: []
       indices: 
       edges: []
@@ -370,17 +244,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Farm_4_0: -2055192598
-      Farm_4_1: -1137658486
-      Farm_4_10: -2092186376
-      Farm_4_2: 1908303848
-      Farm_4_3: 2106650236
-      Farm_4_4: 103581290
-      Farm_4_5: 592350833
-      Farm_4_6: 1983251017
-      Farm_4_7: 1369868154
-      Farm_4_8: 1148265206
-      Farm_4_9: -1820651046
+      wheat_0: 1663423130
+      wheat_1: -1983592543
+      wheat_2: -514743143
+      wheat_3: -1891480130
+      wheat_4: 692887523
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
