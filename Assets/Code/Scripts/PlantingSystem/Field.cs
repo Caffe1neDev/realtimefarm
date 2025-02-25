@@ -30,11 +30,11 @@ public class Field : MonoBehaviour
     public delegate void OnFieldSelection(Field field);
     public event OnFieldSelection onFieldSelection = delegate { };
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer plantSpriteRenderer;
 
     void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        plantSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
@@ -50,18 +50,15 @@ public class Field : MonoBehaviour
         {
             if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
             {
-                ++growthLevel;
-                spriteRenderer.sprite = plant.spriteForLevel[growthLevel];
+                // ++growthLevel;
+                // plantSpriteRenderer.sprite = plant.spriteForLevel[growthLevel];
                 //onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+                OnPlantGrowth();
                 
                 if(growthLevel == plant.maxGrowthLevel)
                 {
                     status = FieldStatus.Mature;
-                    growthTimer = plant.growthTimePerLevel + GetRandomizedGrowthTime(); // temp : 한단계 성장시간*2 방치시 과성장으로 판단
-                }
-                else
-                {
-                    growthTimer = GetRandomizedGrowthTime();
+                    growthTimer += plant.growthTimePerLevel; // temp : 한단계 성장시간*2 방치시 과성장으로 판단
                 }
             }
         }
@@ -75,6 +72,19 @@ public class Field : MonoBehaviour
         }
     }
 
+    private void OnPlantGrowth()
+    {
+        ++growthLevel;
+        plantSpriteRenderer.sprite = plant.spriteForLevel[growthLevel];
+
+        // 성장에 따른 sprite 위치 조정
+        plantSpriteRenderer.transform.position = new Vector3(plantSpriteRenderer.transform.position.x, 
+        plantSpriteRenderer.transform.position.y + (plant.spriteForLevel[growthLevel].bounds.size.y - plant.spriteForLevel[growthLevel - 1].bounds.size.y) / 2.0f,
+        plantSpriteRenderer.transform.position.z);
+        
+        growthTimer = GetRandomizedGrowthTime();
+    }
+
     public void Plant(PlantData toPlant)
     {
         if(status != FieldStatus.Empty)
@@ -85,10 +95,10 @@ public class Field : MonoBehaviour
         status = FieldStatus.Growing;
         plant = toPlant;
 
-        growthTimer = GetRandomizedGrowthTime();
-        growthLevel = 1;
+        growthLevel = 0;
+        OnPlantGrowth();
 
-        onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
+        //onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
     }
 
     public void Harvest()
@@ -116,8 +126,9 @@ public class Field : MonoBehaviour
 
         plant = null;
         status = FieldStatus.Empty;
+        plantSpriteRenderer.sprite = null;
         
-        onCropLevelChangeEvent.Invoke(tilePos, null, false);
+        //onCropLevelChangeEvent.Invoke(tilePos, null, false);
     }
 
     private float GetRandomizedGrowthTime()
@@ -138,5 +149,10 @@ public class Field : MonoBehaviour
         // TODO : add mouse exit logic
         Debug.Log("Mouse Exit");
         onFieldSelection.Invoke(this);
+    }
+
+    public Vector3 GetPlantSpritePosition()
+    {
+        return plantSpriteRenderer.transform.position;
     }
 }

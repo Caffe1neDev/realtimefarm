@@ -14,17 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantName: Carrot
   bestSeason: 5
-  maxGrowthLevel: 5
+  maxGrowthLevel: 3
   tilesForLevel:
   - {fileID: 11400000, guid: 535e1bc9b4e49024294c8ff1fda3ecdc, type: 2}
   - {fileID: 11400000, guid: c8a47f2e351782c4b9faa264f5afe283, type: 2}
   - {fileID: 11400000, guid: 32384b399cd6f5d47bf2d1eeefa80d73, type: 2}
   - {fileID: 11400000, guid: 7b6496de4d764fc49b8c08ebc0aeaad9, type: 2}
-  - {fileID: 11400000, guid: f2b3e90d1adca4241b693ed728dcc8cc, type: 2}
-  - {fileID: 11400000, guid: 44efa4c6c83c73140b4bd9c4f3081596, type: 2}
   spriteForLevel:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 653661992, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
+  - {fileID: -1923902, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
+  - {fileID: -1329846297, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
+  - {fileID: -1805864799, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
   growthTimePerLevel: 1
