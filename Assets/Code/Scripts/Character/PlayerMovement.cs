@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Å×½ºÆ®¿ë")]
+    [Header("í…ŒìŠ¤íŠ¸ìš©")]
     [SerializeField] private float moveSpeed;
     private Animator myAnimator;
     public Animator[] childAnimators;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
-        // ºÎ¸ğ ¾Ö´Ï¸ŞÀÌ¼Ç ÃÊ±â¼¼ÆÃÀ» ÀÚ½Ä Animator¿¡ µ¿±âÈ­
+        // ë¶€ëª¨ ì• ë‹ˆë©”ì´ì…˜ ì´ˆê¸°ì„¸íŒ…ì„ ìì‹ Animatorì— ë™ê¸°í™”
         SyncWithParentAnimator(myAnimator);
     }
 
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator.SetFloat("inputX", inputX);
         myAnimator.SetFloat("inputY", inputY);
 
-        SyncWithParentAnimator(myAnimator); //ÀÚ½Ä¾Ö´Ï¸ŞÀÌ¼Ç¿¡°Ô ÆÄ¶ó¹ÌÅÍ Àü´Ş
+        SyncWithParentAnimator(myAnimator); //ìì‹ì• ë‹ˆë©”ì´ì…˜ì—ê²Œ íŒŒë¼ë¯¸í„° ì „ë‹¬
 
         transform.Translate(new Vector2(inputX, inputY) * Time.deltaTime * moveSpeed);
     }
