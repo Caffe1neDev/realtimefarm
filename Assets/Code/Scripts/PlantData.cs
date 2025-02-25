@@ -17,18 +17,18 @@ public enum SeasonFlags
 [CreateAssetMenu(fileName = "Plant", menuName = "PlantData")]
 public class PlantData : ScriptableObject
 {
+    public int plantId;
     public string plantName;
 
     public SeasonFlags bestSeason;
 
-    [Range(0, 20)]
+    [Range(1, 8)]
     public int maxGrowthLevel;
 
     [Tooltip("Sprites of the plant for each level, 0 - maxGrowthLevel")]
-    public List<TileBase> tilesForLevel;
     public List<Sprite> spriteForLevel;
 
-    [Range(0.0f, 600.0f)]
+    [Range(1.0f, 60.0f)]
     public float growthTimePerLevel;
 
     void OnValidate()
@@ -36,14 +36,14 @@ public class PlantData : ScriptableObject
         // Sprite Count가 기대치와 다르면 개수 조정
         int expectedSpriteCount = maxGrowthLevel + 1;
 
-        while(tilesForLevel.Count < expectedSpriteCount)
+        while(spriteForLevel.Count < expectedSpriteCount)
         {
-            tilesForLevel.Add(null);
+            spriteForLevel.Add(null);
         }
 
-        if(tilesForLevel.Count > expectedSpriteCount)
+        if(spriteForLevel.Count > expectedSpriteCount)
         {
-            tilesForLevel.RemoveRange(expectedSpriteCount, tilesForLevel.Count - expectedSpriteCount);
+            spriteForLevel.RemoveRange(expectedSpriteCount, spriteForLevel.Count - expectedSpriteCount);
         }
     }
 }

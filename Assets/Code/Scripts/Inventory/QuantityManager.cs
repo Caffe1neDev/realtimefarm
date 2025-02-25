@@ -109,15 +109,3 @@ public class QuantityManager : MonoBehaviour
         return new QuantityData();
     }
 }
-
-
-/*
-수확 코드
-
-void HarvestPlant(int plantId, string grade, int amount)
-{
-    QuantityManager.Instance.UpdateQuantity(plantId, grade, amount);
-    ShowPlantDetails(PlantDatabase.Instance.plants.Find(p => p.id == plantId)); // UI 즉시 업데이트
-}
-
-*/

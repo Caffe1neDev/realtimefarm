@@ -78,7 +78,7 @@ public class MouseSelect : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 //OnClickMouse(changeTile);
-                cropManager.Plant(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                cropManager.Plant();
             }
         //}
     }
@@ -93,7 +93,7 @@ public class MouseSelect : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             //OnClickMouse(null);
-            cropManager.Harvest(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            cropManager.Harvest();
         }
     }
 

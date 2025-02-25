@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 707e9436f806f4b47a53e979be8409ba, type: 3}
-  m_Name: Corn
+  m_Name: Wheat
   m_EditorClassIdentifier: 
-  plantId: 6
-  plantName: Corn
+  plantId: 5
+  plantName: Wheat
   bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:
-  - {fileID: -655636679, guid: b809d3c9935d8a542be83116887a8c67, type: 3}
-  - {fileID: -612604969, guid: b809d3c9935d8a542be83116887a8c67, type: 3}
-  - {fileID: 2068946734, guid: b809d3c9935d8a542be83116887a8c67, type: 3}
-  - {fileID: 1592566908, guid: b809d3c9935d8a542be83116887a8c67, type: 3}
-  growthTimePerLevel: 8
+  - {fileID: 1663423130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -1983592543, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -514743143, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  - {fileID: -1891480130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
+  growthTimePerLevel: 20

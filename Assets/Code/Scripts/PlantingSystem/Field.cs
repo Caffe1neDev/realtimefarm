@@ -16,16 +16,13 @@ public enum FieldStatus
 
 public class Field : MonoBehaviour
 {
+    [SerializeField] private Color overgrownCropColor;
     private PlantData plant;
     private FieldStatus status;
     private float growthTimer;
     private int growthLevel;
 
     private float growthPeriodRandomizer = 0.05f; // 성장에 필요한 시간 랜덤화 범위
-    public Vector3Int tilePos; // used to notify crop level change of current Tile
-
-    public delegate void CropGrowthEventHandler(Vector3Int tilePos, TileBase tile, bool isOvergrown);
-    public event CropGrowthEventHandler onCropLevelChangeEvent = delegate { };
 
     public delegate void OnFieldSelection(Field field);
     public event OnFieldSelection onFieldSelection = delegate { };
@@ -37,7 +34,7 @@ public class Field : MonoBehaviour
         plantSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public void UpdateTimer(Season currentSeason, float deltaTime) // TODO : add seasonal effect
+    public void UpdateTimer(Season currentSeason, float deltaTime) 
     {
         if(status == FieldStatus.Empty)
         {
@@ -48,13 +45,9 @@ public class Field : MonoBehaviour
 
         if(status == FieldStatus.Growing) // 일반 성장 확인
         {
-            if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0))
+            if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0)) // 시간 및 맞는 계절인지 확인
             {
-                // ++growthLevel;
-                // plantSpriteRenderer.sprite = plant.spriteForLevel[growthLevel];
-                //onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
-                OnPlantGrowth();
-                
+                OnPlantGrowth();                
                 if(growthLevel == plant.maxGrowthLevel)
                 {
                     status = FieldStatus.Mature;
@@ -67,7 +60,7 @@ public class Field : MonoBehaviour
             if(growthTimer < 0.0f)
             {
                 status = FieldStatus.Overgrown;
-                onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[plant.maxGrowthLevel], true);
+                plantSpriteRenderer.color = overgrownCropColor;
             }
         }
     }
@@ -77,10 +70,17 @@ public class Field : MonoBehaviour
         ++growthLevel;
         plantSpriteRenderer.sprite = plant.spriteForLevel[growthLevel];
 
-        // 성장에 따른 sprite 위치 조정
-        plantSpriteRenderer.transform.position = new Vector3(plantSpriteRenderer.transform.position.x, 
-        plantSpriteRenderer.transform.position.y + (plant.spriteForLevel[growthLevel].bounds.size.y - plant.spriteForLevel[growthLevel - 1].bounds.size.y) / 2.0f,
-        plantSpriteRenderer.transform.position.z);
+        if(growthLevel == 1)
+        {
+            plantSpriteRenderer.transform.position = this.transform.position;
+        }
+        else
+        {
+            // 성장에 따른 sprite 위치 조정
+            plantSpriteRenderer.transform.position = new Vector3(plantSpriteRenderer.transform.position.x, 
+            plantSpriteRenderer.transform.position.y + (plant.spriteForLevel[growthLevel].bounds.size.y - plant.spriteForLevel[growthLevel - 1].bounds.size.y) / 2.0f,
+            plantSpriteRenderer.transform.position.z);
+        }
         
         growthTimer = GetRandomizedGrowthTime();
     }
@@ -94,11 +94,10 @@ public class Field : MonoBehaviour
 
         status = FieldStatus.Growing;
         plant = toPlant;
+        plantSpriteRenderer.color = Color.white;
 
         growthLevel = 0;
         OnPlantGrowth();
-
-        //onCropLevelChangeEvent.Invoke(tilePos, plant.tilesForLevel[growthLevel], false);
     }
 
     public void Harvest()
@@ -107,18 +106,18 @@ public class Field : MonoBehaviour
         {
             return;
         }
-
-        // TODO : add harvest logic
+    
+        // harvest logic
         switch(status)
         {
             case FieldStatus.Growing:
-                // TODO : add immature harvest logic
+                QuantityManager.Instance.UpdateQuantity(plant.plantId, "underripe", 1);
                 break;
             case FieldStatus.Mature:
-                // TODO : add harvest logic
+                QuantityManager.Instance.UpdateQuantity(plant.plantId, "best", 1);
                 break;
             case FieldStatus.Overgrown:
-                // TODO : add overgrown harvest logic
+                QuantityManager.Instance.UpdateQuantity(plant.plantId, "overripe", 1);
                 break;
             default:
                 return;
@@ -128,7 +127,7 @@ public class Field : MonoBehaviour
         status = FieldStatus.Empty;
         plantSpriteRenderer.sprite = null;
         
-        //onCropLevelChangeEvent.Invoke(tilePos, null, false);
+        //ShowPlantDetails(PlantDatabase.Instance.plants.Find(p => p.id == plantId)); // UI 즉시 업데이트
     }
 
     private float GetRandomizedGrowthTime()
@@ -144,10 +143,5 @@ public class Field : MonoBehaviour
     void OnMouseExit()
     {
         onFieldSelection.Invoke(null);
-    }
-
-    public Vector3 GetPlantSpritePosition()
-    {
-        return plantSpriteRenderer.transform.position;
     }
 }

@@ -17,8 +17,6 @@ public class CropManager : MonoBehaviour
     [Header("Test Crop to plant")]
     public PlantData plantData;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +24,6 @@ public class CropManager : MonoBehaviour
         selectedField = null;
         foreach (Field field in fields)
         {
-            //field.onCropLevelChangeEvent += OnCropLevelChange;
             field.onFieldSelection += OnFieldSelection;
         }        
     }
@@ -38,21 +35,6 @@ public class CropManager : MonoBehaviour
         {
             field.UpdateTimer(season, deltaTime);
         }
-        
-    }
-
-    public void OnCropLevelChange(Vector3Int tilePos, TileBase newTile, bool isOvergrown)
-    {
-        // if(isOvergrown)
-        // {
-        //     Debug.Log("Overgrown");
-        //     cropTilemap.SetTileFlags(tilePos, TileFlags.None);
-        //     cropTilemap.SetColor(tilePos, overgrownCropColor);
-        // }
-        // else
-        // {
-        //     cropTilemap.SetTile(tilePos, newTile);
-        // }
     }
 
     public void OnFieldSelection(Field field)
@@ -69,7 +51,7 @@ public class CropManager : MonoBehaviour
         }
     }
 
-    public void Plant(Vector3 mousePosition)               
+    public void Plant()               
     {
         if(selectedField == null)
         {
@@ -77,12 +59,8 @@ public class CropManager : MonoBehaviour
         }
 
         selectedField.Plant(plantData);
-
-        // Vector3Int cellPos = cropTilemap.WorldToCell(mousePosition) - cropTilemap.cellBounds.min;
-        // fields[cellPos.y][cellPos.x].Plant(plantData);
-        Debug.Log("Plant on " + name);
     }
-    public void Harvest(Vector3 mousePosition)
+    public void Harvest()
     {
         if(selectedField == null)
         {
@@ -90,9 +68,5 @@ public class CropManager : MonoBehaviour
         }
 
         selectedField.Harvest();
-
-        // Vector3Int cellPos = cropTilemap.WorldToCell(mousePosition) - cropTilemap.cellBounds.min;
-        // fields[cellPos.y][cellPos.x].Harvest();
-        Debug.Log("Harvest on " + name);
     }
 }

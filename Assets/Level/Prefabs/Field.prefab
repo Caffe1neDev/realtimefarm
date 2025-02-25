@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36646c40723339b4ca79d365a3c39d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePos: {x: 0, y: 0, z: 0}
+  overgrownCropColor: {r: 0.3019608, g: 0.20392157, b: 0.14509805, a: 1}
 --- !u!60 &7202663817637950346
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36646c40723339b4ca79d365a3c39d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePos: {x: 0, y: 0, z: 0}
+  overgrownCropColor: {r: 0.3019608, g: 0.20392157, b: 0.14509805, a: 1}
 --- !u!60 &6805738551381133796
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36646c40723339b4ca79d365a3c39d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePos: {x: 0, y: 0, z: 0}
+  overgrownCropColor: {r: 0.3019608, g: 0.20392157, b: 0.14509805, a: 1}
 --- !u!60 &3357677395907370186
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36646c40723339b4ca79d365a3c39d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilePos: {x: 0, y: 0, z: 0}
+  overgrownCropColor: {r: 0.3019608, g: 0.20392157, b: 0.14509805, a: 1}
 --- !u!60 &8854355783174175548
 PolygonCollider2D:
   m_ObjectHideFlags: 0
