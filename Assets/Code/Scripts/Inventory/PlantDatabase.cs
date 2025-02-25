@@ -20,6 +20,15 @@ public class PlantDatabase : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (PlantDatabase.Instance != null)
+        {
+            QuantityManager.Instance.InitializeQuantities(PlantDatabase.Instance.plants);
+        }
+    }
+
+
     void LoadPlantData()
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("plant_data");
