@@ -60,7 +60,7 @@ public class CropManager : MonoBehaviour
             return;
         }
 
-        selectedField.Plant(plantData);
+        selectedField.Plant(selectedPlant);
     }
     public void Harvest()
     {
@@ -74,6 +74,6 @@ public class CropManager : MonoBehaviour
 
     public void SetSelectedPlant(PlantData plant)
     {
-        plantData = plant;
+        selectedPlant = plant;
     }
 }
