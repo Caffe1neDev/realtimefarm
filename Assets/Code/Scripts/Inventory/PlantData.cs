@@ -7,18 +7,11 @@ public class Plant
     public int id;
     public string name;
     public string description;
-    public string image;
-    public Harvest harvest;
+    public string sprite_name;
+
     public Price price;
 }
 
-[Serializable]
-public class Harvest
-{
-    public int underripe;
-    public int overripe;
-    public int best;
-}
 
 [Serializable]
 public class Price{

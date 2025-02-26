@@ -20,18 +20,27 @@ public class PlantDatabase : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (PlantDatabase.Instance != null)
+        {
+            QuantityManager.Instance.InitializeQuantities(PlantDatabase.Instance.plants);
+        }
+    }
+
+
     void LoadPlantData()
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("plant_data");
 
         if (jsonFile != null)
         {
-            Debug.Log("JSON 로드 성공!");
-            Debug.Log("로드된 JSON: " + jsonFile.text);  // JSON 내용 확인용 로그 추가
+            //Debug.Log("JSON 로드 성공!");
+            //Debug.Log("로드된 JSON: " + jsonFile.text);  // JSON 내용 확인용 로그 추가
 
             plants = JsonUtility.FromJson<PlantList>("{\"plants\":" + jsonFile.text + "}").plants;
 
-            Debug.Log($"로드된 식물 개수: {plants.Count}");
+            //Debug.Log($"로드된 식물 개수: {plants.Count}");
         }
         else
         {
