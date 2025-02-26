@@ -10,6 +10,9 @@ public class CropManager : MonoBehaviour
 {  
     [SerializeField] private MouseSelect mouseSelect;
     [SerializeField] private Color overgrownCropColor;
+    [SerializeField] public AudioSource PlantAudio;
+    [SerializeField] public AudioSource HarvestAudio;
+
 
     private Field[] fields;    
     private Field selectedField;
@@ -61,6 +64,8 @@ public class CropManager : MonoBehaviour
         }
 
         selectedField.Plant(selectedPlant);
+        PlayAudio(PlantAudio);
+
     }
     public void Harvest()
     {
@@ -70,10 +75,15 @@ public class CropManager : MonoBehaviour
         }
 
         selectedField.Harvest();
+        PlayAudio(HarvestAudio);
     }
 
     public void SetSelectedPlant(PlantData plant)
     {
         selectedPlant = plant;
+    }
+
+    public void PlayAudio(AudioSource audio){
+        audio.Play();
     }
 }
