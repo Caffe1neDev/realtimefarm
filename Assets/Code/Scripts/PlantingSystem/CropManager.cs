@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 // Generate fields for each crop tile and manage planting & harvesting
 public class CropManager : MonoBehaviour
