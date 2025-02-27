@@ -2,23 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Flags]
-public enum SeasonFlags
-{
-    Spring = 1 << 0,
-    Summer = 1 << 1,
-    Fall = 1 << 2,
-    Invalid = 1 << 3
-};
-
 [CreateAssetMenu(fileName = "Plant", menuName = "PlantData")]
 public class PlantData : ScriptableObject
 {
     public int plantId;
     public string plantName;
     public Sprite plantImage;
-
-    public SeasonFlags bestSeason;
 
     [Range(1, 8)]
     public int maxGrowthLevel;

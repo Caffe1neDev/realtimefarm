@@ -29,11 +29,11 @@ public class CropManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void UpdateTime(Season season, float deltaTime)
+    public void UpdateTime(float deltaTime)
     {
         foreach (Field field in fields)
         {
-            field.UpdateTimer(season, deltaTime);
+            field.UpdateTimer(deltaTime);
         }
     }
 
