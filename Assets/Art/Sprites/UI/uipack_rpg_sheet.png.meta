@@ -218,7 +218,7 @@ TextureImporter:
         width: 190
         height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,6 +226,69 @@ TextureImporter:
       bones: []
       spriteID: e1fbe7dbb1a619c46a68df65d1c8e04c
       internalID: -1429700146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_right_arrow
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 5
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e8262657369854ab980a954103a6c0
+      internalID: 953377639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_left_arrow
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 5
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eaafadb46876e3409cbfb2c7b324f40
+      internalID: 1764273949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: instruction_window
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 36
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 8, y: 8, z: 8, w: 8}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4579fe9b5d0d32145a70b9567aa2a585
+      internalID: 462703295
       vertices: []
       indices: 
       edges: []
@@ -244,8 +307,11 @@ TextureImporter:
       InventorySlot: 1468837429
       SeasonBarBackground: -1179324599
       SelectorSlot: -1679082348
+      UI_left_arrow: 1764273949
+      UI_right_arrow: 953377639
       WindowBase: 533824785
       dayDisplayBackground: 2143154784
+      instruction_window: 462703295
       uipack_rpg_sheet_0: -1429700146
   spritePackingTag: 
   pSDRemoveMatte: 0
