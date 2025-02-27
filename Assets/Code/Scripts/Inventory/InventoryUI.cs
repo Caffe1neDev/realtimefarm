@@ -31,13 +31,11 @@ public class InventoryUI : MonoBehaviour
         LoadPlants();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ActiveInventory = !ActiveInventory;
-            InventoryPanel.SetActive(ActiveInventory);
-        }
+    public void ShowInventory(){
+        
+        ActiveInventory = !ActiveInventory;
+        InventoryPanel.SetActive(ActiveInventory);
+        
     }
 
     void LoadPlants()
