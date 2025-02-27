@@ -11,7 +11,8 @@ public enum Season
 public class GlobalTimeManager : MonoBehaviour
 {
     [Header("UI Displays")]
-    //public SpriteRenderer seasonDisplay;
+    public Image seasonPointer;
+    public Image seasonBar;
     public TMP_Text dayDisplay;
     public Sprite[] seasonSprites = new Sprite[4];
 
@@ -24,6 +25,7 @@ public class GlobalTimeManager : MonoBehaviour
     private float elaspedTimeInDay;
     private Season currentSeason;
     private int currentDay;
+    private float seasonPointerMovePerSeconds;
 
     public CropManager cropManager;
 
@@ -36,7 +38,8 @@ public class GlobalTimeManager : MonoBehaviour
         elaspedTimeInDay = 0.0f;
         currentSeason = startSeason;
         currentDay = 1;
-        UpdateSeasonDisplay(currentSeason);
+
+        InitializeSeasonPointerInfo();
     }
 
     // Update is called once per frame
@@ -59,6 +62,8 @@ public class GlobalTimeManager : MonoBehaviour
         }
 
         cropManager.UpdateTime(currentSeason, Time.deltaTime);
+
+        seasonPointer.rectTransform.Translate(new Vector3(seasonPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
     }
 
     void UpdateSeason()
@@ -68,7 +73,7 @@ public class GlobalTimeManager : MonoBehaviour
 
         if(currentSeason != Season.Invalid)
         {
-            UpdateSeasonDisplay(currentSeason);
+            //UpdateSeasonDisplay(currentSeason);
         }
         else
         {
@@ -81,9 +86,18 @@ public class GlobalTimeManager : MonoBehaviour
         dayDisplay.text = SeasonToString(currentSeason) + " " + currentDay + "일";
     }
 
-    void UpdateSeasonDisplay(Season newSeason)
+    void InitializeSeasonPointerInfo()
     {
-        //seasonDisplay.sprite = seasonSprites[(int)newSeason];
+        int totalGameLength = dayLengthInSeconds * seasonLengthinDays * 3;
+        seasonPointerMovePerSeconds = seasonBar.rectTransform.rect.width / totalGameLength;
+        float scaler = 1.0f;
+        Transform parent = seasonPointer.transform.parent;
+        while(parent != null)
+        {
+            scaler *= parent.localScale.x;
+            parent = parent.parent;
+        }
+        seasonPointerMovePerSeconds *= scaler;
     }
 
     string SeasonToString(Season season)
