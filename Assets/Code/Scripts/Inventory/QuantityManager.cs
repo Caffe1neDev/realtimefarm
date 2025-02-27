@@ -32,6 +32,7 @@ public class QuantityManager : MonoBehaviour
         {
             Instance = this;
             InitializeDictionary();
+            DontDestroyOnLoad(Instance);
         }
         else
         {
@@ -112,5 +113,10 @@ public class QuantityManager : MonoBehaviour
     public List<QuantityEntry> GetAllQuantities()
     {
         return plantQuantities;
+    }
+
+    public void Suicide()
+    {
+        Destroy(Instance);
     }
 }

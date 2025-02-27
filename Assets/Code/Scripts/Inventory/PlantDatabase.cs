@@ -52,4 +52,9 @@ public class PlantDatabase : MonoBehaviour
     {
         return plants.Find(plant => plant.id == id);
     }
+
+    public void Suicide()
+    {
+        Destroy(Instance);
+    }
 }
