@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ResultUI : MonoBehaviour
 {
     public Transform[] cropUIElements; // Inspector에서 직접 설정 (ResultPanel의 자식들)
@@ -67,5 +67,9 @@ public class ResultUI : MonoBehaviour
 
             totalText.text = $"총합: {totalEarnings}원";
         }
+    }
+
+    public void LoadMainMenu(){
+        SceneManager.LoadScene("StartScene");
     }
 }
