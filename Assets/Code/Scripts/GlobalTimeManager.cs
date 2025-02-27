@@ -29,6 +29,7 @@ public class GlobalTimeManager : MonoBehaviour
     private float seasonPointerMovePerSeconds;
 
     public CropManager cropManager;
+    public GameObject ResultPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,7 @@ public class GlobalTimeManager : MonoBehaviour
         else
         {
             // game over
+            ResultPanel.SetActive(true);
         }
     }
 
@@ -122,6 +124,6 @@ public class GlobalTimeManager : MonoBehaviour
     }
     
     void EndScene(){
-        SceneManager.LoadScene("EndScene");
+        ResultPanel.SetActive(true);
     }
 }

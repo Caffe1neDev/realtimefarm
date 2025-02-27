@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HarvestSummaryManager : MonoBehaviour
 {
-    private void Start() {
+    private void Start() 
+    {
         CalculateTotalEarning();
     }
 
