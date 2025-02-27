@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public enum Season 
 {
     Spring, Summer, Fall, Invalid
@@ -64,6 +65,9 @@ public class GlobalTimeManager : MonoBehaviour
         cropManager.UpdateTime(currentSeason, Time.deltaTime);
 
         seasonPointer.rectTransform.Translate(new Vector3(seasonPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
+        // For Testing
+        if(Input.GetKeyDown(KeyCode.Y))
+            EndScene();
     }
 
     void UpdateSeason()
@@ -115,5 +119,9 @@ public class GlobalTimeManager : MonoBehaviour
             default:
                 return "Invalid";
         }
+    }
+    
+    void EndScene(){
+        SceneManager.LoadScene("EndScene");
     }
 }

@@ -47,4 +47,9 @@ public class PlantDatabase : MonoBehaviour
             Debug.LogError("JSON 파일을 찾을 수 없습니다. plant_data.json이 Resources 폴더에 있는지 확인하세요.");
         }
     }
+    
+    public Plant GetPlantById(int id)
+    {
+        return plants.Find(plant => plant.id == id);
+    }
 }
