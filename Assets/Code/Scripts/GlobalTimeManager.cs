@@ -23,7 +23,6 @@ public class GlobalTimeManager : MonoBehaviour
     private float progressPointerMovePerSeconds;
 
     public CropManager cropManager;
-    public GameObject ResultPanel;
 
     private bool isGamePaused;
 
@@ -57,7 +56,7 @@ public class GlobalTimeManager : MonoBehaviour
         progressPointer.rectTransform.Translate(new Vector3(progressPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
         // For Testing
         if(Input.GetKeyDown(KeyCode.Y))
-            EndScene();
+            SceneManager.LoadScene("EndScene");
     }
 
     void UpdateDay()
@@ -65,9 +64,12 @@ public class GlobalTimeManager : MonoBehaviour
         if(++currentDay > gameLengthInDays)
         {
             // game over
-            ResultPanel.SetActive(true);
+            SceneManager.LoadScene("EndScene");
         }
-        dayText.text = "Day " + currentDay;
+        else
+        {
+            dayText.text = currentDay + "일차";
+        }
     }
 
     void InitializeProgressPointerInfo()
@@ -82,10 +84,6 @@ public class GlobalTimeManager : MonoBehaviour
             parent = parent.parent;
         }
         progressPointerMovePerSeconds *= scaler;
-    }
-    
-    void EndScene(){
-        ResultPanel.SetActive(true);
     }
 
     public void OnPause()
