@@ -32,7 +32,6 @@ public class QuantityManager : MonoBehaviour
         {
             Instance = this;
             InitializeDictionary();
-            DontDestroyOnLoad(gameObject);  // 씬 변경 시 삭제되지 않도록 설정
         }
         else
         {
