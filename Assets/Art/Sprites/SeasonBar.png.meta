@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f6c94649cf168ca46a7d876d5ff6a3c6
+guid: 73e83dc4074cfce4f9b32195272b7139
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,70 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: seasonDisplay_head
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 147
-        width: 3
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c46db60635ad9748a6a3d53db1af690
-      internalID: -33093107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seasonDisplay_tail
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 147
-        width: 2
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7be83f22748ec0242a0ddd3a2ef03593
-      internalID: -1726041276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seasonDisplay_body
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 147
-        width: 51
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aac081d91eb8c9d44a4d988bea8557c6
-      internalID: 1387740745
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -177,16 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      SeasonBar_Tail: 243194925
-      SeasonDisplayUI: -1447415627
-      fall: 1064400901
-      seasonDisplay_body: 1387740745
-      seasonDisplay_head: -33093107
-      seasonDisplay_tail: -1726041276
-      spring: -535700264
-      summer: -1011351468
-      winter: -1238583077
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

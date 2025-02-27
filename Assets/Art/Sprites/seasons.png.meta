@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 828e7d84399e45a4583381eb1821bfe5
+guid: e33379cd8a9d19b4fbd436eb1d0af1c1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -105,118 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WindowBase
+      name: seasons_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 36
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 8, y: 8, z: 8, w: 8}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8bee058a7335f564b851e34599ccf4f0
-      internalID: 533824785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: InventorySlot
-      rect:
-        serializedVersion: 2
-        x: 290
-        y: 328
-        width: 45
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98459667e4c39ca4aaae1a844656ad70
-      internalID: 1468837429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SelectorSlot
-      rect:
-        serializedVersion: 2
-        x: 290
-        y: 373
-        width: 45
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b55c6335f306bb4190e90f9954f0baf
-      internalID: -1679082348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SeasonBarBackground
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 463
-        width: 190
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13ec252f66a3b7845aa22612bfba7400
-      internalID: -1179324599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dayDisplayBackground
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 414
-        width: 190
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7b97e7ce761c1c4a940c3fdd08757b6
-      internalID: 2143154784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: uipack_rpg_sheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 230
-        width: 190
-        height: 45
+        x: 52
+        y: 263
+        width: 185
+        height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +119,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1fbe7dbb1a619c46a68df65d1c8e04c
-      internalID: -1429700146
+      spriteID: fdca1bbc30491c14bba189df0c6de783
+      internalID: -1817721489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seasons_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 263
+        width: 187
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108c24bff8e61054b885012b07bb8c74
+      internalID: 1480906157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seasons_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 51
+        width: 185
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8548069b93e43fc46948266f6f26cf8f
+      internalID: 2003127785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seasons_3
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 51
+        width: 187
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15bebb132fcd0064ca098c46bea48dcd
+      internalID: -1258573016
       vertices: []
       indices: 
       edges: []
@@ -241,12 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      InventorySlot: 1468837429
-      SeasonBarBackground: -1179324599
-      SelectorSlot: -1679082348
-      WindowBase: 533824785
-      dayDisplayBackground: 2143154784
-      uipack_rpg_sheet_0: -1429700146
+      seasons_0: -1817721489
+      seasons_1: 1480906157
+      seasons_2: 2003127785
+      seasons_3: -1258573016
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
