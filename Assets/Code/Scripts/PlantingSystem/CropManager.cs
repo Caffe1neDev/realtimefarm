@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -34,11 +32,11 @@ public class CropManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void UpdateTime(Season season, float deltaTime)
+    public void UpdateTime(float deltaTime)
     {
         foreach (Field field in fields)
         {
-            field.UpdateTimer(season, deltaTime);
+            field.UpdateTimer(deltaTime);
         }
     }
 

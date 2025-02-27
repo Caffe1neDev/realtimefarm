@@ -5,6 +5,7 @@ using UnityEngine;
 public class Instruction : MonoBehaviour
 {
     [SerializeField] private GlobalTimeManager timeManager;
+    [SerializeField] private CursorManager cursorManager;
     [SerializeField] private List<GameObject> instructionPages = new List<GameObject>();
     private int currentPage;
 
@@ -12,6 +13,7 @@ public class Instruction : MonoBehaviour
     void Start()
     {
         Debug.Assert(timeManager != null, "Time Manager is not set in Instruction");
+        Debug.Assert(cursorManager != null, "Cursor Manager is not set in Instruction");
 
         foreach (var page in instructionPages)
         {
@@ -45,6 +47,7 @@ public class Instruction : MonoBehaviour
     public void OnGameStart()
     {
         timeManager.gameObject.SetActive(true);
+        cursorManager.gameObject.SetActive(true);
 
         instructionPages[currentPage].SetActive(false);
         gameObject.SetActive(false);

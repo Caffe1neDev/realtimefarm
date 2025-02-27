@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Tilemaps;
 
 public enum FieldStatus
 {
@@ -34,7 +31,7 @@ public class Field : MonoBehaviour
         plantSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-    public void UpdateTimer(Season currentSeason, float deltaTime) 
+    public void UpdateTimer(float deltaTime) 
     {
         if(status == FieldStatus.Empty)
         {
@@ -45,7 +42,7 @@ public class Field : MonoBehaviour
 
         if(status == FieldStatus.Growing) // 일반 성장 확인
         {
-            if(growthTimer < 0.0f && (((int)plant.bestSeason & (1 << (int)currentSeason)) != 0)) // 시간 및 맞는 계절인지 확인
+            if(growthTimer < 0.0f)
             {
                 OnPlantGrowth();                
                 if(growthLevel == plant.maxGrowthLevel)
