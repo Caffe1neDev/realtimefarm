@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Timer : MonoBehaviour
 {
     private TextMesh displayText;
@@ -24,6 +25,7 @@ public class Timer : MonoBehaviour
 
         UpdateDisplayTime();
     }
+        
 
     void UpdateDisplayTime()
     {
