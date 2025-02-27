@@ -29,7 +29,6 @@ public class GlobalTimeManager : MonoBehaviour
     private float seasonPointerMovePerSeconds;
 
     public CropManager cropManager;
-    public GameObject ResultPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -66,9 +65,8 @@ public class GlobalTimeManager : MonoBehaviour
         cropManager.UpdateTime(currentSeason, Time.deltaTime);
 
         seasonPointer.rectTransform.Translate(new Vector3(seasonPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
-        // For Testing
         if(Input.GetKeyDown(KeyCode.Y))
-            EndScene();
+            SceneManager.LoadScene("EndScene");
     }
 
     void UpdateSeason()
@@ -83,7 +81,7 @@ public class GlobalTimeManager : MonoBehaviour
         else
         {
             // game over
-            ResultPanel.SetActive(true);
+            SceneManager.LoadScene("EndScene");
         }
     }
 
@@ -121,9 +119,5 @@ public class GlobalTimeManager : MonoBehaviour
             default:
                 return "Invalid";
         }
-    }
-    
-    void EndScene(){
-        ResultPanel.SetActive(true);
     }
 }
