@@ -32,6 +32,7 @@ public class QuantityManager : MonoBehaviour
         {
             Instance = this;
             InitializeDictionary();
+            DontDestroyOnLoad(gameObject);  // 씬 변경 시 삭제되지 않도록 설정
         }
         else
         {
@@ -107,5 +108,10 @@ public class QuantityManager : MonoBehaviour
 
         Debug.LogError($"❌ 수확 데이터가 존재하지 않음 (ID: {plantId})");
         return new QuantityData();
+    }
+
+    public List<QuantityEntry> GetAllQuantities()
+    {
+        return plantQuantities;
     }
 }
