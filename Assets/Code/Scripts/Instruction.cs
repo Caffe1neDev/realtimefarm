@@ -7,6 +7,8 @@ public class Instruction : MonoBehaviour
     [SerializeField] private GlobalTimeManager timeManager;
     [SerializeField] private CursorManager cursorManager;
     [SerializeField] private List<GameObject> instructionPages = new List<GameObject>();
+
+    [SerializeField] private AudioSource clickAudio;
     private int currentPage;
 
     // Start is called before the first frame update
@@ -51,5 +53,10 @@ public class Instruction : MonoBehaviour
 
         instructionPages[currentPage].SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    public void PlayClickAudio()
+    {
+        clickAudio.Play();
     }
 }
