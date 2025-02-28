@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ enum CursorState
     PreChecking, // 마우스가 움직이지 않으면서, Check Indicator가 나타나기 전
     Checking, // Check Indicator가 표시되는 중
     AFK,
+    InventoryOpened,
     NotInGame
 }
 
@@ -29,6 +31,8 @@ public class CursorManager : MonoBehaviour
     private RectTransform rectTransform;
     private Image cursorImage;
     private CursorState cursorState;
+
+    private CursorState prevState;
 
     public GlobalTimeManager globalTimeManager;
 
@@ -59,7 +63,7 @@ public class CursorManager : MonoBehaviour
     {
         rectTransform.position = Input.mousePosition;
 
-        if(cursorState == CursorState.NotInGame)
+        if(cursorState == CursorState.NotInGame || cursorState == CursorState.InventoryOpened)
         {
             return;
         }
@@ -97,6 +101,7 @@ public class CursorManager : MonoBehaviour
             {
                 cursorState = CursorState.Checking;
                 AFKCheckerObject.SetActive(true);
+                AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", 0);
             }
         }
         else
@@ -136,5 +141,35 @@ public class CursorManager : MonoBehaviour
     public void OnGameStart()
     {
         cursorState = CursorState.Default;
+    }
+
+    public void OnToggleInventory()
+    {
+        if(cursorState != CursorState.InventoryOpened)
+        {
+            if(cursorState == CursorState.AFK)
+            {
+                globalTimeManager.OnPause();
+            }
+
+            prevState = cursorState;
+            cursorState = CursorState.InventoryOpened;
+
+            AFKCheckerObject.SetActive(false);
+            AFKIndicatorObject.SetActive(false);
+        }
+        else
+        {
+            if(prevState == CursorState.AFK)
+            {
+                globalTimeManager.OnResume();
+                AFKIndicatorObject.SetActive(true);
+            }
+            else if(prevState == CursorState.Checking)
+            {
+                AFKCheckerObject.SetActive(true);
+            }
+            cursorState = prevState;
+        }
     }
 }
