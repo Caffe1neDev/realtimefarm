@@ -95,11 +95,11 @@ public class Field : MonoBehaviour
         OnPlantGrowth();
     }
 
-    public void Harvest()
+    public bool Harvest()
     {
         if(status == FieldStatus.Empty)
         {
-            return;
+            return false;
         }
     
         // harvest logic
@@ -115,13 +115,14 @@ public class Field : MonoBehaviour
                 QuantityManager.Instance.UpdateQuantity(plant.plantId, "overripe", 1);
                 break;
             default:
-                return;
+                return false;
         }
 
         plant = null;
         status = FieldStatus.Empty;
         plantSpriteRenderer.sprite = null;
         
+        return true;
         //ShowPlantDetails(PlantDatabase.Instance.plants.Find(p => p.id == plantId)); // UI 즉시 업데이트
     }
 

@@ -66,7 +66,7 @@ Shader "Custom/CircleFillShader"
                 float filledAngle = _FillAmount * 360;
 
                 // 현재 픽셀의 각도가 filledAngle보다 작으면 렌더링, 아니면 투명
-                if (angle <= filledAngle)
+                if (360.0 - angle >= filledAngle)
                 {
                     return _FillColor;
                 }

@@ -69,8 +69,10 @@ public class CropManager : MonoBehaviour
             return;
         }
 
-        selectedField.Harvest();
-        PlayAudio(HarvestAudio);
+        if (selectedField.Harvest()) // 성공적으로 수확했을 때만
+        {
+            PlayAudio(HarvestAudio);
+        }
     }
 
     public void SetSelectedPlant(PlantData plant)
