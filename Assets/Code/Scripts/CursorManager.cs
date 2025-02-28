@@ -101,7 +101,7 @@ public class CursorManager : MonoBehaviour
             {
                 cursorState = CursorState.Checking;
                 AFKCheckerObject.SetActive(true);
-                AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", 0);
+                AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", 0.0001f);
             }
         }
         else
