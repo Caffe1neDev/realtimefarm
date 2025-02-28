@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 4
   plantName: Sumflower
   plantImage: {fileID: 1999258616, guid: 23c994f64aa03e44c8760860409f8481, type: 3}
-  bestSeason: 2
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: 1700280552, guid: 23c994f64aa03e44c8760860409f8481, type: 3}
   - {fileID: 1295932648, guid: 23c994f64aa03e44c8760860409f8481, type: 3}
   - {fileID: -1300056670, guid: 23c994f64aa03e44c8760860409f8481, type: 3}
   - {fileID: -51396651, guid: 23c994f64aa03e44c8760860409f8481, type: 3}
-  growthTimePerLevel: 10
+  growthTimePerLevel: 14

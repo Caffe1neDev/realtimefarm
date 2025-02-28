@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 3
   plantName: Pumpkin
   plantImage: {fileID: -1184649792, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
-  bestSeason: 6
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: 1177537071, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
   - {fileID: -1759375190, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
   - {fileID: 1829126946, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
   - {fileID: -884556605, guid: 109e47084c63a054da6ce9497e7209c3, type: 3}
-  growthTimePerLevel: 15
+  growthTimePerLevel: 17

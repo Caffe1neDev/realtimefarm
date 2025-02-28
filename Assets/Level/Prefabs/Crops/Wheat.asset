@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 5
   plantName: Wheat
   plantImage: {fileID: 692887523, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
-  bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: 1663423130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
   - {fileID: -1983592543, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
   - {fileID: -514743143, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
   - {fileID: -1891480130, guid: 233ce065043491a42b1fd46b62294afd, type: 3}
-  growthTimePerLevel: 20
+  growthTimePerLevel: 10

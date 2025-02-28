@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 7
   plantName: Broccoli
   plantImage: {fileID: -2117989532, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
-  bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: -208427393, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
   - {fileID: -1807962288, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
   - {fileID: -1287293106, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
   - {fileID: 1681397295, guid: ee060fea9ababbb4c96c485e0372cea6, type: 3}
-  growthTimePerLevel: 10
+  growthTimePerLevel: 13
