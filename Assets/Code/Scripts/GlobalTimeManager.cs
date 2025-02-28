@@ -11,8 +11,6 @@ public class GlobalTimeManager : MonoBehaviour
     public Image progressPointer;
     public Image progressBar;
 
-    public TMP_Text dayText;
-
     [Header("Global Time Setting")]
     public int gameLengthInDays;
     public int dayLengthInSeconds;
@@ -68,7 +66,7 @@ public class GlobalTimeManager : MonoBehaviour
         }
         else
         {
-            dayText.text = currentDay + "일차";
+            //dayText.text = currentDay + "일차";
         }
     }
 
