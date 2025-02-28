@@ -18,12 +18,12 @@ public class ImageRotator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Rotate(float deltaTime)
     {
         if(isRotatingCCW)
         {
             //rectTransform.Rotate(Vector3.forward, );
-            rectTransform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+            rectTransform.Rotate(0, 0, rotationSpeed * deltaTime);
             if(rectTransform.rotation.eulerAngles.z < 180.0f && rectTransform.rotation.eulerAngles.z > maxRotationDegree)
             {
                 isRotatingCCW = false;
@@ -31,7 +31,7 @@ public class ImageRotator : MonoBehaviour
         }
         else
         {
-            rectTransform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
+            rectTransform.Rotate(0, 0, -rotationSpeed * deltaTime);
             if(rectTransform.rotation.eulerAngles.z > 180.0f && rectTransform.rotation.eulerAngles.z < (360.0f - maxRotationDegree))
             {
                 isRotatingCCW = true;

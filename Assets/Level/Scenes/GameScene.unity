@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSelect: {fileID: 506630719}
-  overgrownCropColor: {r: 0.3018868, g: 0.2020573, b: 0.14382343, a: 1}
+  overgrownCropColor: {r: 0.3679245, g: 0.20196798, b: 0.10239409, a: 1}
   PlantAudio: {fileID: 905396399}
   HarvestAudio: {fileID: 1916454632}
   plantData: {fileID: 11400000, guid: c990a4a7ee9acf84fbab02f6ce2907c7, type: 2}
@@ -13027,7 +13027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressPointer: {fileID: 652230424}
   progressBar: {fileID: 1600271918}
-  gameLengthInDays: 15
+  gameLengthInDays: 300
   dayLengthInSeconds: 1
   cropManager: {fileID: 30517129}
 --- !u!4 &1677146950

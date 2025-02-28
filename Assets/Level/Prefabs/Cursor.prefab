@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AFKIndicatorObject: {fileID: 3981118136535290894}
   AFKCheckerObject: {fileID: 8258795551822098549}
-  AFKReadyTimer: 1
+  AFKReadyTimer: 0.5
   AFKSetTimer: 1
   globalTimeManager: {fileID: 0}
 --- !u!1 &3981118136136379588
