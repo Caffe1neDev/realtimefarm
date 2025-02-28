@@ -11,6 +11,8 @@ public class MouseSelect : MonoBehaviour
     public int y;
 
     public CropManager cropManager;
+
+    private bool isInventoryOpened;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,13 @@ public class MouseSelect : MonoBehaviour
         {
             cropManager = FindObjectOfType<CropManager>();
         }
+        
+        isInventoryOpened = false;
     }
 
     private void Update()
     {
-        //if (EventSystem.current.IsPointerOverGameObject()) return;
+        if(isInventoryOpened) return;
         
         if (Input.GetMouseButtonUp(0))
         {
@@ -46,5 +50,10 @@ public class MouseSelect : MonoBehaviour
     public void SetCursurPosition(Vector3 position)
     {
         transform.position = position;
+    }
+
+    public void ToggleInventory()   
+    {
+        isInventoryOpened = !isInventoryOpened;
     }
 }

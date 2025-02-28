@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -120,6 +121,9 @@ public class InventoryUI : MonoBehaviour
         {
             Image slotImage = PlantInfoSlots[i].transform.Find("Image").GetComponent<Image>();
             slotImage.sprite = sprites[i];
+
+            // sprite 원본 크기에 맞도록 Image 크기 조정
+            slotImage.GetComponent<RectTransform>().localScale = sprites[i].bounds.size;
         }
     }
 
