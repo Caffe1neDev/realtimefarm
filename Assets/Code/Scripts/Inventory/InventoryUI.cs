@@ -23,6 +23,13 @@ public class InventoryUI : MonoBehaviour
 
     private bool ActiveInventory = false;
 
+    // 오디오
+
+    // 열기
+    [SerializeField] public AudioSource InventoryAudio;
+    // 닫기
+    [SerializeField] public AudioSource ClickAudio;
+
     private void Start()
     {
         InventoryPanel.SetActive(ActiveInventory);
@@ -35,6 +42,7 @@ public class InventoryUI : MonoBehaviour
         
         ActiveInventory = !ActiveInventory;
         InventoryPanel.SetActive(ActiveInventory);
+        PlayAudio(InventoryAudio);
         
     }
 
@@ -113,6 +121,23 @@ public class InventoryUI : MonoBehaviour
             Image slotImage = PlantInfoSlots[i].transform.Find("Image").GetComponent<Image>();
             slotImage.sprite = sprites[i];
         }
+    }
+
+    void PlayAudio(AudioSource audio)
+    {
+        audio.Play();
+    }
+
+    // 인벤토리 열면 재생
+    public void PlayInventorySound()
+    {
+        PlayAudio(InventoryAudio);
+    }
+
+    // 그냥 버튼 클릭
+    public void PlayClickSound()
+    {
+        PlayAudio(ClickAudio);
     }
 }
 

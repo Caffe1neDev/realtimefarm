@@ -7,7 +7,7 @@ public class ResultUI : MonoBehaviour
 {
     public Transform[] cropUIElements; // Inspector에서 직접 설정 (ResultPanel의 자식들)
     public TextMeshProUGUI totalText; // 총합 텍스트 UI
-
+    [SerializeField] private AudioSource clickAudio;
     
     private void Update()
     {
@@ -91,6 +91,20 @@ public class ResultUI : MonoBehaviour
         }
     }
 
+    public void DeleteDB()
+    {
+        GameObject dbObject = GameObject.Find("DB");
+        if (dbObject != null)
+        {
+            Destroy(dbObject);
+            Debug.Log("✅ 'DB' 오브젝트 삭제 완료");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ 'DB' 오브젝트를 찾을 수 없습니다.");
+        }
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("StartScene");
@@ -99,22 +113,11 @@ public class ResultUI : MonoBehaviour
         PlantDatabase plantDatabase = FindObjectOfType<PlantDatabase>();
         plantDatabase.Suicide();
         DeleteDB();
-
-    
     }
 
-    public void DeleteDB()
-{
-    GameObject dbObject = GameObject.Find("DB");
-    if (dbObject != null)
+    public void PlayClickAudio()
     {
-        Destroy(dbObject);
-        Debug.Log("✅ 'DB' 오브젝트 삭제 완료");
+        clickAudio.Play();
     }
-    else
-    {
-        Debug.LogWarning("⚠️ 'DB' 오브젝트를 찾을 수 없습니다.");
-    }
-}
 
 }
