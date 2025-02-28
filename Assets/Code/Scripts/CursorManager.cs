@@ -25,8 +25,6 @@ public class CursorManager : MonoBehaviour
 
     void Awake()
     {
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-
         isAFK = false;
         isTestingAFK = false;
         AFKTimer = AFKSetTimer;
@@ -52,7 +50,7 @@ public class CursorManager : MonoBehaviour
 
             isAFK = false;
             isTestingAFK = false;
-            //Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
             Cursor.visible = true;
             AFKIndicator.enabled = false;
             AFKCursorObject.SetActive(false);

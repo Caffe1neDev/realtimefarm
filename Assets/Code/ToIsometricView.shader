@@ -51,11 +51,13 @@ Shader "Custom/ToIsometricView"
                 float isoY = worldPos.z + _ShearFactor * isoZ;
 
                 // 위치 보정 (스케일 적용)
-                v.vertex = float4(isoX * _IsoScale, isoY * _IsoScale, isoZ * _IsoScale, 1.0);
+                v.vertex = float4(isoX * _IsoScale, isoY * _IsoScale, 0.0, 1.0);
 
                 // 변환된 좌표를 적용
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+                o.pos.z = 0.0; // Z값 하드코딩하여 깊이 왜곡 방지
                 return o;
             }
 
