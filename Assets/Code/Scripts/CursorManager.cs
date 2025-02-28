@@ -88,6 +88,7 @@ public class CursorManager : MonoBehaviour
 
         AFKTimer = AFKSetTimer + AFKReadyTimer;
         indicatorDisplayTimer = AFKReadyTimer;
+        AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", 1.0f);
     }
 
     void CheckAFK()
@@ -101,7 +102,6 @@ public class CursorManager : MonoBehaviour
             {
                 cursorState = CursorState.Checking;
                 AFKCheckerObject.SetActive(true);
-                AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", 0.0001f);
             }
         }
         else
