@@ -3,40 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum CursorState
+{
+    Default,
+    PreChecking, // 마우스가 움직이지 않으면서, Check Indicator가 나타나기 전
+    Checking, // Check Indicator가 표시되는 중
+    AFK,
+    NotInGame
+}
+
 public class CursorManager : MonoBehaviour
 {
-    public Texture2D cursorTexture;
-    public Texture2D AFKCursorTexture;
-    public GameObject AFKCursorObject;
+    public GameObject AFKIndicatorObject;
+    public GameObject AFKCheckerObject;
     public float AFKReadyTimer = 1.0f;
     public float AFKSetTimer = 1.0f;
+
+    /*
+        AFK Checkers
+    */
+    private Vector3 prevMousePosition;
     private float AFKTimer;
     private float indicatorDisplayTimer;
 
-    private Vector3 prevMousePosition;
-    private bool isAFK;
-    private bool isTestingAFK;
-    private bool isWaitingIndicator;
-
     private RectTransform rectTransform;
-    private Image AFKIndicator;
+    private Image cursorImage;
+    private CursorState cursorState;
 
     public GlobalTimeManager globalTimeManager;
 
     void Awake()
     {
-        isAFK = false;
-        isTestingAFK = false;
-        AFKTimer = AFKSetTimer;
-
         rectTransform = this.GetComponent<RectTransform>();
-        AFKIndicator = this.GetComponent<Image>();
+        cursorImage = GetComponent<Image>();
+
+        cursorState = CursorState.NotInGame;
+
+        Cursor.visible = false;
+
+        AFKIndicatorObject.SetActive(false);
+        AFKCheckerObject.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        globalTimeManager.OnPause();
+        if(globalTimeManager != null)
+        {
+            globalTimeManager.OnPause();
+        }
     }
 
     // Update is called once per frame
@@ -44,50 +59,82 @@ public class CursorManager : MonoBehaviour
     {
         rectTransform.position = Input.mousePosition;
 
+        if(cursorState == CursorState.NotInGame)
+        {
+            return;
+        }
+
         if(prevMousePosition != Input.mousePosition)
         {
-            prevMousePosition = Input.mousePosition;
-
-            isAFK = false;
-            isTestingAFK = false;
-            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
-            Cursor.visible = true;
-            AFKIndicator.enabled = false;
-            AFKCursorObject.SetActive(false);
-            
-            globalTimeManager.OnPause();
+            LeaveAFK();
         }
-        else if(!isTestingAFK)
+        else if(cursorState == CursorState.Default)
         {
-            AFKTimer = AFKSetTimer + AFKReadyTimer;
-            indicatorDisplayTimer = AFKReadyTimer;
-            isTestingAFK = true;
-            isWaitingIndicator = true;
+            EnterCheckAFK();
         }
-        else if(!isAFK)
-        {  
-            AFKTimer -= Time.deltaTime;
-            indicatorDisplayTimer -= Time.deltaTime;
+        else if(cursorState == CursorState.PreChecking || cursorState == CursorState.Checking)
+        {
+            CheckAFK();
+        }
+    }
 
-            if(isWaitingIndicator && indicatorDisplayTimer <= 0.0) // test if indicator should be displayed
+    void EnterCheckAFK()
+    {
+        cursorState = CursorState.PreChecking;
+
+        AFKTimer = AFKSetTimer + AFKReadyTimer;
+        indicatorDisplayTimer = AFKReadyTimer;
+    }
+
+    void CheckAFK()
+    {
+        AFKTimer -= Time.deltaTime;
+        indicatorDisplayTimer -= Time.deltaTime;
+
+        if(cursorState == CursorState.PreChecking)
+        {
+            if(indicatorDisplayTimer <= 0.0)
             {
-                isWaitingIndicator = false;
-                AFKIndicator.enabled = true;
-            }
-            else if(!isWaitingIndicator && AFKTimer > 0.0) // Update indicator indicator
-            {
-                AFKIndicator.material.SetFloat("_FillAmount", AFKTimer / AFKSetTimer);
-            }
-            else if(AFKTimer <= 0.0)
-            {
-                isAFK = true;
-                //Cursor.SetCursor(AFKCursorTexture, Vector2.zero, CursorMode.Auto);
-                AFKIndicator.enabled = false;
-                AFKCursorObject.SetActive(true);
-                Cursor.visible = false;
-                
-                globalTimeManager.OnResume();
+                cursorState = CursorState.Checking;
+                AFKCheckerObject.SetActive(true);
             }
         }
+        else
+        {
+            if(AFKTimer <= 0.0)
+            {
+                EnterAFK();
+            }
+            else
+            {
+                AFKCheckerObject.GetComponent<Image>().material.SetFloat("_FillAmount", AFKTimer / AFKSetTimer);
+            }
+        }
+    }
+
+    void EnterAFK()
+    {
+        cursorState = CursorState.AFK;
+        AFKCheckerObject.SetActive(false);
+        AFKIndicatorObject.SetActive(true);
+        
+        globalTimeManager.OnResume();
+    }
+
+    void LeaveAFK()
+    {
+        cursorState = CursorState.Default;
+
+        prevMousePosition = Input.mousePosition;
+
+        AFKCheckerObject.SetActive(false);
+        AFKIndicatorObject.SetActive(false);
+        
+        globalTimeManager.OnPause();
+    }
+
+    public void OnGameStart()
+    {
+        cursorState = CursorState.Default;
     }
 }
