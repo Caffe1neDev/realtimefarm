@@ -11,6 +11,8 @@ public class GlobalTimeManager : MonoBehaviour
     public Image progressPointer;
     public Image progressBar;
 
+    private ImageRotator pointerRotator;
+
     [Header("Global Time Setting")]
     public int gameLengthInDays;
     public int dayLengthInSeconds;
@@ -52,6 +54,8 @@ public class GlobalTimeManager : MonoBehaviour
         cropManager.UpdateTime(Time.deltaTime);
 
         progressPointer.rectTransform.Translate(new Vector3(progressPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
+        pointerRotator.Rotate(Time.deltaTime);
+
         // For Testing
         if(Input.GetKeyDown(KeyCode.Y))
             SceneManager.LoadScene("EndScene");
@@ -82,6 +86,8 @@ public class GlobalTimeManager : MonoBehaviour
             parent = parent.parent;
         }
         progressPointerMovePerSeconds *= scaler;
+
+        pointerRotator = progressPointer.GetComponent<ImageRotator>();
     }
 
     public void OnPause()

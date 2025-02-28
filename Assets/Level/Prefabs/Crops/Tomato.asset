@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 1
   plantName: Tomato
   plantImage: {fileID: -1079908024, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
-  bestSeason: 3
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: 790106885, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
   - {fileID: 1468692662, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
   - {fileID: 1757061024, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
   - {fileID: -818170749, guid: d3b4f619e742f1f4b86e318ca4acc76e, type: 3}
-  growthTimePerLevel: 15
+  growthTimePerLevel: 12

@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 2
   plantName: Carrot
   plantImage: {fileID: -1131659733, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
-  bestSeason: 7
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: 653661992, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
   - {fileID: -1923902, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
   - {fileID: -1329846297, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
   - {fileID: -1805864799, guid: bc6ecc3c47005ad419d0744b4ec7ad86, type: 3}
-  growthTimePerLevel: 12
+  growthTimePerLevel: 8

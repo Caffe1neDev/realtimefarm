@@ -15,11 +15,10 @@ MonoBehaviour:
   plantId: 8
   plantName: Eggplant
   plantImage: {fileID: -314149868, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
-  bestSeason: 1
   maxGrowthLevel: 3
   spriteForLevel:
   - {fileID: -199141401, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
   - {fileID: 109879001, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
   - {fileID: -250872721, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
   - {fileID: -1261963757, guid: 9ca483d7e17f7444f85ff3f11d4bf3ac, type: 3}
-  growthTimePerLevel: 8
+  growthTimePerLevel: 12
