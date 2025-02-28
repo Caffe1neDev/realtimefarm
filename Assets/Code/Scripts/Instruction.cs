@@ -49,7 +49,7 @@ public class Instruction : MonoBehaviour
     public void OnGameStart()
     {
         timeManager.gameObject.SetActive(true);
-        cursorManager.gameObject.SetActive(true);
+        cursorManager.OnGameStart();
 
         instructionPages[currentPage].SetActive(false);
         gameObject.SetActive(false);
