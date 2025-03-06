@@ -53,6 +53,18 @@ public class GlobalTimeManager : MonoBehaviour
 
         cropManager.UpdateTime(Time.deltaTime);
 
+         // 임시: InitializeProgresPointerInfo() 에서 화면크기따른 버그 픽스 용도로 가져옴
+        int totalGameLength = dayLengthInSeconds * gameLengthInDays;
+        progressPointerMovePerSeconds = progressBar.rectTransform.rect.width / totalGameLength;
+        float scaler = 1.0f;
+        Transform parent = progressPointer.transform.parent;
+        while(parent != null)
+        {
+            scaler *= parent.localScale.x;
+            parent = parent.parent;
+        }
+        progressPointerMovePerSeconds *= scaler;
+        
         progressPointer.rectTransform.Translate(new Vector3(progressPointerMovePerSeconds * Time.deltaTime, 0, 0), Space.World);
         pointerRotator.Rotate(Time.deltaTime);
 
